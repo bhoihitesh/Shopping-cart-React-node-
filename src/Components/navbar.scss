@@ -1,6 +1,11 @@
 // default bootstrap css
-.row>*{
-    margin-top: 0px !important;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+.row > * {
+  margin-top: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+// navbar options
+.navbar-options {
+  cursor: pointer;
 }

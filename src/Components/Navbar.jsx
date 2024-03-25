@@ -4,9 +4,11 @@ import brand from "../assets/logo/brand.png";
 import cart from "../assets/images/icons8-cart-24.png";
 import notification from "../assets/images/icons8-bell-24.png";
 import { RiMenu2Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
+  const navigate=useNavigate()
   return (
     <>
       <div className="container-fluid navbar-main">
@@ -26,19 +28,19 @@ const Navbar = () => {
                 }`}
               >
                 <ul className="list-group d-flex flex-row align-items-center flex-sm-row flex-column">
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2">
+                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options" onClick={()=>navigate('/')}>
                     Home
                   </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2">
+                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
                     Products
                   </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2">
+                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
                     Services
                   </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2">
+                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
                     Contact us
                   </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2">
+                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
                     About us
                   </li>
                 </ul>
@@ -52,10 +54,10 @@ const Navbar = () => {
                 }`}
               >
                 <div className="cart-section">
-                  <img src={cart} alt="cart" />
+                  <img src={cart} alt="cart" className="navbar-options" onClick={()=>navigate('cart')}/>
                 </div>
                 <div className="notification-section">
-                  <img src={notification} alt="notification" />
+                  <img src={notification} alt="notification" className="navbar-options"/>
                 </div>
               </div>
             </div>
