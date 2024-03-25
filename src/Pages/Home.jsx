@@ -6,9 +6,13 @@ import nonVeg from "../assets/images/icons8-non-veg-48.png";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [allProduct, setAllProduct] = useState([]);
+  const [APIData, setAPIData] = useState([]);
+  const [productCategory, setProductCategory] = useState("all");
+  const [searchFood, setSearchFood] = useState("");
   const getProducts = async () => {
     let res = await axios.get("http://localhost:5000/api/products");
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
+    res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
   };
 
   useEffect(() => {
@@ -17,18 +21,102 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  console.warn("response", allProduct);
   // handle add to cart function
   const handleAddcart = async (item) => {
-    console.log("id", item);
-
-    let res = await axios.post("http://localhost:5000/api/add-to-cart", { item });
-    console.log("post product",res)
+    let res = await axios.post("http://localhost:5000/api/add-to-cart", {
+      item,
+    });
     res.status == "200" ? navigate("/cart") : "";
+  };
+
+  useEffect(() => {
+    const filterData = APIData.filter(
+      (item) => item.category == productCategory
+    );
+    setAllProduct(filterData);
+  }, [productCategory]);
+
+  // search filter
+  const handleSearchFilter = (e) => {
+    const { value } = e.target;
+    let searchFilter = APIData.filter((item) => {
+      const name = item.name.toLowerCase().includes(value);
+      const price = item.price.toString().includes(value);
+      const category = item.category.includes(value);
+      const discount = item.discount.toString().includes(value);
+      const type = item.type.includes(value);
+
+      return category || price || name || discount || type;
+    });
+    console.warn(searchFilter);
+    let searchData = APIData.filter((item) => item.category.includes(value));
+    setAllProduct(value == "" ? APIData : searchFilter);
+    setSearchFood(value);
   };
   return (
     <>
       <div className="container-fluid">
+        <div className="row">
+          <div className="col-12">
+            <div className="searchbar-container w-100 d-flex justify-content-end align-items-center gap-4">
+              <input
+                type="text"
+                className="form-control w-25"
+                value={searchFood}
+                placeholder="Search food by category..."
+                onChange={(e) => handleSearchFilter(e)}
+              />
+              <div class="dropdown">
+                <button
+                  class="btn bg-light dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Category
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      onClick={() => setAllProduct(APIData)}
+                    >
+                      All
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      onClick={() => setProductCategory("burger")}
+                    >
+                      Burger
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      onClick={() => setProductCategory("noodle")}
+                    >
+                      Noodle
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      onClick={() => setProductCategory("sandwich")}
+                    >
+                      Sandwich
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row">
           {allProduct.map((item, index) => {
             return (
