@@ -10,7 +10,7 @@ const Home = () => {
   const [productCategory, setProductCategory] = useState("all");
   const [searchFood, setSearchFood] = useState("");
   const getProducts = async () => {
-    let res = await axios.get("http://localhost:5000/api/products");
+    let res = await axios.get("https://foodhunt-z2x3.onrender.com/api/products");
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
     res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
   };
@@ -23,7 +23,7 @@ const Home = () => {
 
   // handle add to cart function
   const handleAddcart = async (item) => {
-    let res = await axios.post("http://localhost:5000/api/add-to-cart", {
+    let res = await axios.post("https://foodhunt-z2x3.onrender.com/api/add-to-cart", {
       item,
     });
     res.status == "200" ? navigate("/cart") : "";

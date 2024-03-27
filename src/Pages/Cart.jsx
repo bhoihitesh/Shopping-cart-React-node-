@@ -12,7 +12,7 @@ const Cart = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [openDelModel, setOpenDelModel] = useState(false);
   const getProducts = async () => {
-    let res = await axios.get("http://localhost:5000/api/cart-products");
+    let res = await axios.get("https://foodhunt-z2x3.onrender.com/api/cart-products");
     console.log("res", res);
     res.status == 200
       ? setAllProduct(res.data && res.data.getCartProducts)
@@ -26,7 +26,7 @@ const Cart = () => {
 
   const removeCartitem = async (item) => {
     let res = await axios.delete(
-      "http://localhost:5000/api/remove-cart-product",
+      "https://foodhunt-z2x3.onrender.com/api/remove-cart-product",
       { data: { item } }
     );
     res.status == "200" ? getProducts() : "";
