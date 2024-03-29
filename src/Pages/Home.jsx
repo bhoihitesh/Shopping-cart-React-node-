@@ -11,6 +11,7 @@ const Home = () => {
   const [searchFood, setSearchFood] = useState("");
   const getProducts = async () => {
     let res = await axios.get("https://foodhunt-z2x3.onrender.com/api/products");
+    console.warn("response header",res);
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
     res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
   };
