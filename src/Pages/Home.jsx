@@ -9,8 +9,11 @@ const Home = () => {
   const [APIData, setAPIData] = useState([]);
   const [productCategory, setProductCategory] = useState("all");
   const [searchFood, setSearchFood] = useState("");
+  // const api=process.env.REACT_APP_API;
+  const api = import.meta.env.VITE_API;;
+  console.log("api",api)
   const getProducts = async () => {
-    let res = await axios.get("https://foodhunt-z2x3.onrender.com/api/products");
+    let res = await axios.get(`${api}/products`);
     console.warn("response header",res);
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
     res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
