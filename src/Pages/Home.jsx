@@ -9,11 +9,37 @@ const Home = () => {
   const [APIData, setAPIData] = useState([]);
   const [productCategory, setProductCategory] = useState("all");
   const [searchFood, setSearchFood] = useState("");
+  // const getProducts = async () => {
+  //   let res = await axios.get("https://foodhunt-z2x3.onrender.com/api/products");
+  //   console.warn("response header",res);
+  //   res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
+  //   res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
+  // };
   const getProducts = async () => {
-    let res = await axios.get("https://foodhunt-z2x3.onrender.com/api/products");
-    console.warn("response header",res);
-    res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
-    res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
+    try {
+      let res = await axios.get(
+        "https://foodhunt-z2x3.onrender.com/api/products",
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "https://foodhuntshop.onrender.com/",
+            // Add any other necessary headers here
+          },
+        }
+      );
+
+      console.warn("response header", res);
+
+      if (res.status === 200) {
+        setAllProduct(res.data && res.data.getProducts);
+        setAPIData(res.data && res.data.getProducts);
+      } else {
+        // Handle other status codes if needed
+        console.error("Unexpected status code:", res.status);
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error fetching products:", error);
+    }
   };
 
   useEffect(() => {
@@ -24,9 +50,12 @@ const Home = () => {
 
   // handle add to cart function
   const handleAddcart = async (item) => {
-    let res = await axios.post("https://foodhunt-z2x3.onrender.com/api/add-to-cart", {
-      item,
-    });
+    let res = await axios.post(
+      "https://foodhunt-z2x3.onrender.com/api/add-to-cart",
+      {
+        item,
+      }
+    );
     res.status == "200" ? navigate("/cart") : "";
   };
 
