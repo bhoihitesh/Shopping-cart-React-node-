@@ -60,9 +60,9 @@
     }
   }
   
-  @media screen and ( 767px <= width){
+  @media screen and ( width <= 767px ){
     .loader-div{
-        height: 80vh;
-        width: 100%;
+        position: absolute;
+        top: 50%;
     } 
   }
