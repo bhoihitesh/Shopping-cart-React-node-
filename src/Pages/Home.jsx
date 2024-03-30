@@ -9,14 +9,17 @@ const Home = () => {
   const [APIData, setAPIData] = useState([]);
   const [productCategory, setProductCategory] = useState("all");
   const [searchFood, setSearchFood] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [addCart, setAddCart] = useState(false);
   // const api=process.env.REACT_APP_API;
-  const api = import.meta.env.VITE_API;;
-  console.log("api",api)
+  const api = import.meta.env.VITE_API;
+  console.log("api", api);
   const getProducts = async () => {
     let res = await axios.get(`${api}/products`);
-    console.warn("response header",res);
+    console.warn("response header", res);
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
     res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
+    res.status == 200 ? setLoading(false) : setLoading(true);
   };
 
   useEffect(() => {
@@ -27,6 +30,8 @@ const Home = () => {
 
   // handle add to cart function
   const handleAddcart = async (item) => {
+    setLoading(true)
+    setAddCart(true)
     let res = await axios.post(
       "https://foodhunt-z2x3.onrender.com/api/add-to-cart",
       {
@@ -65,7 +70,10 @@ const Home = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
-            <div className="searchbar-container w-100 d-flex justify-content-end align-items-center gap-4">
+           { loading ? 
+           ''
+           :
+           <div className="searchbar-container w-100 d-flex justify-content-end align-items-center gap-4">
               <input
                 type="text"
                 className="form-control w-25"
@@ -121,65 +129,83 @@ const Home = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
         <div className="row">
-          {allProduct.map((item, index) => {
-            return (
-              <>
-                <div className="col-lg-3 col-md-6 col-sm-12 p-3">
-                  <div className="card rounded-3 border-0" key={index + 1}>
-                    <img src={item.img} alt="img" className="rounded-2" />
-                    <div
-                      className="card-title product-name text-nowrap fw-normal"
-                      style={{ fontSize: "15px" }}
-                    >
-                      {item.name}
-                    </div>
-                    {/* <div className="card-title product-category">{item.category}</div> */}
-                    <div className="product-price-section m-0 d-flex justify-content-between align-items-center">
-                      <div className="product-price">
-                        <p className="m-0 p-0">
-                          <span className="fs-5 fw-medium">₹</span>
-                          <span className="fs-5 fw-medium">{item.price}</span>
-                        </p>
-                        <p className="product-discount fs-6 fw-medium d-flex gap-1">
-                          {item.discount + " OFF"}
-                          <div className="card-title product-type">
-                            {item.type == "veg" ? (
-                              <img
-                                src={veg}
-                                alt="veg"
-                                style={{ width: "20px" }}
-                              />
-                            ) : (
-                              <img
-                                src={nonVeg}
-                                alt="nonVeg"
-                                style={{ width: "20px" }}
-                              />
-                            )}
-                          </div>
-                        </p>
-                      </div>
-                      <div className="add-product d-flex gap-2">
-                        <button className="btn btn-outline-success rounded-pill px-4">
-                          Buy
-                        </button>
-                        <button
-                          className="btn btn-outline-warning rounded-pill px-4"
-                          onClick={() => handleAddcart(item)}
+          {loading ? (
+            <div className=" d-grid justify-content-center align-items-center loader-div">
+              <span className="loader"></span>
+            </div>
+          ) : (
+            <>
+              {allProduct.map((item, index) => {
+                return (
+                  <>
+                    <div className="col-lg-3 col-md-6 col-sm-12 p-3">
+                      <div className="card rounded-3 border-0" key={index + 1}>
+                        <img src={item.img} alt="img" className="rounded-2" />
+                        <div
+                          className="card-title product-name text-nowrap fw-normal"
+                          style={{ fontSize: "15px" }}
                         >
-                          Add
-                        </button>
+                          {item.name}
+                        </div>
+                        {/* <div className="card-title product-category">{item.category}</div> */}
+                        <div className="product-price-section m-0 d-flex justify-content-between align-items-center">
+                          <div className="product-price">
+                            <p className="m-0 p-0">
+                              <span className="fs-5 fw-medium">₹</span>
+                              <span className="fs-5 fw-medium">
+                                {item.price}
+                              </span>
+                            </p>
+                            <p className="product-discount fs-6 fw-medium d-flex gap-1">
+                              {item.discount + " OFF"}
+                              <div className="card-title product-type">
+                                {item.type == "veg" ? (
+                                  <img
+                                    src={veg}
+                                    alt="veg"
+                                    style={{ width: "20px" }}
+                                  />
+                                ) : (
+                                  <img
+                                    src={nonVeg}
+                                    alt="nonVeg"
+                                    style={{ width: "20px" }}
+                                  />
+                                )}
+                              </div>
+                            </p>
+                          </div>
+                          <div className="add-product d-flex gap-2">
+                            <button className="btn btn-outline-success rounded-pill px-4">
+                              Buy
+                            </button>
+                            {addCart
+                            ?
+                            <button
+                              className="btn btn-outline-warning rounded-pill px-4 disabled"
+                            >
+                              Added
+                            </button>
+                            :
+                            <button
+                              className="btn btn-outline-warning rounded-pill px-4"
+                              onClick={() => handleAddcart(item)}
+                            >
+                              Add
+                            </button>}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </>
-            );
-          })}
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </>
