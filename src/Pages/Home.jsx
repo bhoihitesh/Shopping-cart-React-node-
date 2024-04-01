@@ -4,6 +4,8 @@ import axios from "axios";
 import veg from "../assets/images/icons8-veg-48.png";
 import nonVeg from "../assets/images/icons8-non-veg-48.png";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [APIData, setAPIData] = useState([]);
@@ -11,12 +13,9 @@ const Home = () => {
   const [searchFood, setSearchFood] = useState("");
   const [loading, setLoading] = useState(true);
   const [addCart, setAddCart] = useState(false);
-  // const api=process.env.REACT_APP_API;
   const api = import.meta.env.VITE_API;
-  console.log("api", api);
   const getProducts = async () => {
     let res = await axios.get(`${api}/products`);
-    console.warn("response header", res);
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
     res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
     res.status == 200 ? setLoading(false) : setLoading(true);
@@ -30,17 +29,38 @@ const Home = () => {
 
   // handle add to cart function
   const handleAddcart = async (item) => {
-    setLoading(true)
-    setAddCart(true)
-    let res = await axios.post(
-      "https://foodhunt-z2x3.onrender.com/api/add-to-cart",
-      {
-        item,
-      }
+    const addtocart = item._id;
+    const response = await axios.get(`${api}/cart-products`);
+    const cartProducts =
+      response.status == "200" ? response.data.getCartProducts : "";
+    const cartProductIds = cartProducts.map((product) => product._id);
+    console.log("cartProductIds", cartProductIds);
+    const filteredProducts = cartProducts.filter((item) =>
+      addtocart.includes(item._id)
     );
-    res.status == "200" ? navigate("/cart") : "";
-  };
+    let res;
+    filteredProducts.length == 0
+      ? (res = await axios.post(`${api}/add-to-cart`, {
+          item,
+        }))
+      : setLoading(false);
 
+    if (filteredProducts.length == 1) {
+      setAddCart(true);
+      toast.warning("Already added to the cart !");
+      setTimeout(() => {
+        setAddCart(false);
+      }, 1000);
+    } else {
+      // Product already exists in the cart
+      toast.success("Successfully added to the cart !");
+      setTimeout(() => {
+        navigate("/cart");
+      }, 3000);
+    }
+
+    filteredProducts.length == 1 ? setLoading(false) : setLoading(true);
+  };
   useEffect(() => {
     const filterData = APIData.filter(
       (item) => item.category == productCategory
@@ -60,8 +80,6 @@ const Home = () => {
 
       return category || price || name || discount || type;
     });
-    console.warn(searchFilter);
-    let searchData = APIData.filter((item) => item.category.includes(value));
     setAllProduct(value == "" ? APIData : searchFilter);
     setSearchFood(value);
   };
@@ -70,66 +88,67 @@ const Home = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
-           { loading ? 
-           ''
-           :
-           <div className="searchbar-container w-100 d-flex justify-content-end align-items-center gap-4">
-              <input
-                type="text"
-                className="form-control w-25"
-                value={searchFood}
-                placeholder="Search food by category..."
-                onChange={(e) => handleSearchFilter(e)}
-              />
-              <div class="dropdown">
-                <button
-                  class="btn bg-light dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Category
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={() => setAllProduct(APIData)}
-                    >
-                      All
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={() => setProductCategory("burger")}
-                    >
-                      Burger
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={() => setProductCategory("noodle")}
-                    >
-                      Noodle
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={() => setProductCategory("sandwich")}
-                    >
-                      Sandwich
-                    </a>
-                  </li>
-                </ul>
+            {loading ? (
+              ""
+            ) : (
+              <div className="searchbar-container w-100 d-flex justify-content-end align-items-center gap-4">
+                <input
+                  type="text"
+                  className="form-control searchbar-input"
+                  value={searchFood}
+                  placeholder="Search food by category..."
+                  onChange={(e) => handleSearchFilter(e)}
+                />
+                <div className="dropdown">
+                  <button
+                    className="btn bg-light dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Category
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={() => setAllProduct(APIData)}
+                      >
+                        All
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={() => setProductCategory("burger")}
+                      >
+                        Burger
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={() => setProductCategory("noodle")}
+                      >
+                        Noodle
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={() => setProductCategory("sandwich")}
+                      >
+                        Sandwich
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>}
+            )}
           </div>
         </div>
         <div className="row">
@@ -161,7 +180,9 @@ const Home = () => {
                               </span>
                             </p>
                             <p className="product-discount fs-6 fw-medium d-flex gap-1">
-                              {item.discount + " OFF"}
+                              {item.discount == "none"
+                                ? ""
+                                : item.discount + " OFF"}
                               <div className="card-title product-type">
                                 {item.type == "veg" ? (
                                   <img
@@ -183,20 +204,13 @@ const Home = () => {
                             <button className="btn btn-outline-success rounded-pill px-4">
                               Buy
                             </button>
-                            {addCart
-                            ?
-                            <button
-                              className="btn btn-outline-warning rounded-pill px-4 disabled"
-                            >
-                              Added
-                            </button>
-                            :
+
                             <button
                               className="btn btn-outline-warning rounded-pill px-4"
                               onClick={() => handleAddcart(item)}
                             >
                               Add
-                            </button>}
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -208,6 +222,7 @@ const Home = () => {
           )}
         </div>
       </div>
+      <ToastContainer autoClose={2000}/>
     </>
   );
 };

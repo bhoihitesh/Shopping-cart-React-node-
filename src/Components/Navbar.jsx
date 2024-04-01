@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 import brand from "../assets/logo/brand.png";
 import cart from "../assets/images/icons8-cart-24.png";
@@ -8,7 +8,15 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    setToggleNavbar(true);
+    navigate("/");
+  };
+  const handleCartNavigate = () => {
+    setToggleNavbar(true);
+    navigate("/cart");
+  };
   return (
     <>
       <div className="container-fluid navbar-main">
@@ -28,7 +36,10 @@ const Navbar = () => {
                 }`}
               >
                 <ul className="list-group d-flex flex-row align-items-center flex-sm-row flex-column">
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options" onClick={()=>navigate('/')}>
+                  <li
+                    className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                    onClick={() => handleNavigate()}
+                  >
                     Home
                   </li>
                   <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
@@ -54,10 +65,19 @@ const Navbar = () => {
                 }`}
               >
                 <div className="cart-section">
-                  <img src={cart} alt="cart" className="navbar-options" onClick={()=>navigate('cart')}/>
+                  <img
+                    src={cart}
+                    alt="cart"
+                    className="navbar-options"
+                    onClick={() => handleCartNavigate()}
+                  />
                 </div>
                 <div className="notification-section">
-                  <img src={notification} alt="notification" className="navbar-options"/>
+                  <img
+                    src={notification}
+                    alt="notification"
+                    className="navbar-options"
+                  />
                 </div>
               </div>
             </div>
