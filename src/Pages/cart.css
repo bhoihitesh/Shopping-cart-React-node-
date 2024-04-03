@@ -1,26 +1,16 @@
-$display: "flex";
-$flex-direction: "column";
-$justify-content: "center";
-$align-items: "center";
-
-// delete model css
+/* delete model css */
 .delete-model {
   position: fixed;
   top: 35%;
   left: 40%;
   padding: 50px;
   background-color: white;
-  display: $display;
-  justify-content: $flex-direction;
-  align-items: $align-items;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: auto;
   transition: 0.8s ease all;
 }
-
-// continue shopping image css
-// .continueShopping {
-//   width: 50%;
-// }
 
 /*** loader css start ***/
 .loader {
@@ -93,48 +83,26 @@ $align-items: "center";
 
 /*** loader css end ***/
 @media screen and (width <= 767px) {
-  // delete model css
+  /* delete model css */
   .delete-model {
     top: 38% !important;
     left: 10% !important;
     width: 80% !important;
   }
-  // continue shopping image css
+  /* continue shopping image css */
   .continueShopping {
     width: 100% !important;
   }
-  // delete warning text css
+  /* delete warning text css */
   .delete-warning {
     font-size: 16px !important;
   }
 }
 @media screen and (250px <= width <= 354px) {
-  // delete model css
-  // .delete-model {
-  //   top: 38% !important;
-  //   left: 5% !important;
-  //   width: 90% !important;
-  // }
-  // continue shopping image css
-  // .continueShopping {
-  //   width: 100% !important;
-  // }
-  // delete warning text css
+  /* delete warning text css */
   .delete-warning {
     font-size: 16px !important;
   }
-}
-@media screen and (355px <= width <= 767px) {
-  // // delete model css
-  // .delete-model {
-  //   top: 38% !important;
-  //   left: 10% !important;
-  //   width: 80% !important;
-  // }
-  // continue shopping image css
-  // .continueShopping {
-  //   width: 100% !important;
-  // }
 }
 @media screen and (768px <= width <= 1023px) {
   .delete-model {
