@@ -13,7 +13,6 @@ $align-items: "center";
   display: $display;
   justify-content: $flex-direction;
   align-items: $align-items;
-  // width: 25%;
   height: auto;
   transition: 0.8s ease all;
 }
@@ -51,9 +50,15 @@ $align-items: "center";
 }
 
 @keyframes rotate {
-  0% { transform: rotate(0deg) scale(0.8) }
-  50% { transform: rotate(360deg) scale(1.2) }
-  100% { transform: rotate(720deg) scale(0.8) }
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(720deg) scale(0.8);
+  }
 }
 
 @keyframes ball1 {
@@ -87,23 +92,7 @@ $align-items: "center";
 }
 
 /*** loader css end ***/
-@media screen and (250px <= width <= 354px) {
-  // delete model css
-  .delete-model {
-    top: 38% !important;
-    left: 5% !important;
-    width: 90% !important;
-  }
-  // continue shopping image css
-  .continueShopping {
-    width: 100% !important;
-  }
-  // delete warning text css
-  .delete-warning {
-    font-size: 16px !important;
-  }
-}
-@media screen and (355px <= width <= 767px) {
+@media screen and (width <= 767px) {
   // delete model css
   .delete-model {
     top: 38% !important;
@@ -114,6 +103,38 @@ $align-items: "center";
   .continueShopping {
     width: 100% !important;
   }
+  // delete warning text css
+  .delete-warning {
+    font-size: 16px !important;
+  }
+}
+@media screen and (250px <= width <= 354px) {
+  // delete model css
+  // .delete-model {
+  //   top: 38% !important;
+  //   left: 5% !important;
+  //   width: 90% !important;
+  // }
+  // continue shopping image css
+  // .continueShopping {
+  //   width: 100% !important;
+  // }
+  // delete warning text css
+  .delete-warning {
+    font-size: 16px !important;
+  }
+}
+@media screen and (355px <= width <= 767px) {
+  // // delete model css
+  // .delete-model {
+  //   top: 38% !important;
+  //   left: 10% !important;
+  //   width: 80% !important;
+  // }
+  // continue shopping image css
+  // .continueShopping {
+  //   width: 100% !important;
+  // }
 }
 @media screen and (768px <= width <= 1023px) {
   .delete-model {
@@ -132,7 +153,7 @@ $align-items: "center";
     width: 50% !important;
   }
   .continueShopping {
-    width: 100% !important;
+    width: 40% !important;
   }
 }
 @media screen and (1280px <= width <= 1365px) {
@@ -142,6 +163,26 @@ $align-items: "center";
     width: 30% !important;
   }
   .continueShopping {
-    width: 100% !important;
+    width: 40% !important;
+  }
+}
+@media screen and (1366px <= width <= 1440px) {
+  .delete-model {
+    top: 40% !important;
+    left: 35% !important;
+    width: 30% !important;
+  }
+  .continueShopping {
+    width: 30% !important;
+  }
+}
+@media screen and (1441px <= width <= 1560px) {
+  .delete-model {
+    top: 40% !important;
+    left: 35% !important;
+    width: 30% !important;
+  }
+  .continueShopping {
+    width: 30% !important;
   }
 }
