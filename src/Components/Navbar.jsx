@@ -10,11 +10,11 @@ const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
   const navigate = useNavigate();
   const handleNavigate = () => {
-    setToggleNavbar(true);
+    // setToggleNavbar(false);
     navigate("/");
   };
   const handleCartNavigate = () => {
-    setToggleNavbar(true);
+    // setToggleNavbar(false);
     navigate("/cart");
   };
   return (

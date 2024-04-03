@@ -13,15 +13,15 @@ $align-items: "center";
   display: $display;
   justify-content: $flex-direction;
   align-items: $align-items;
-  width: 25%;
+  // width: 25%;
   height: auto;
   transition: 0.8s ease all;
 }
 
 // continue shopping image css
-.continueShopping {
-  width: 50%;
-}
+// .continueShopping {
+//   width: 50%;
+// }
 
 /*** loader css start ***/
 .loader {

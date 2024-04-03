@@ -98,7 +98,6 @@ const Cart = () => {
                               </button>
                               <button
                                 className="btn p-0 m-0"
-                                // onClick={() => removeCartitem(item)}
                                 onClick={() => setOpenDelModel(!openDelModel)}
                               >
                                 <img src={deleteProduct} alt="delete product" />
@@ -114,6 +113,7 @@ const Cart = () => {
                             ? "delete-model shadow p-3 rounded"
                             : "d-none"
                         }`}
+                        style={{width:'25%'}}
                       >
                         <div className="delete-dialog-box bg-white">
                           <div className="d-flex flex-column justify-content-center align-items-center">
@@ -123,7 +123,7 @@ const Cart = () => {
                             <img
                               src={deleteProductPopup}
                               alt="delete product"
-                              style={{ width: "30%" }}
+                              style={{ width: "100px" }}
                             />
                           </div>
                           <div className="delete-btn-group d-flex justify-content-center gap-4">
@@ -157,6 +157,7 @@ const Cart = () => {
                         src={continueShopping}
                         alt="continueShopping"
                         className="continueShopping"
+                        style={{width:'30%'}}
                       />
                       <button
                         className="btn btn-warning"
