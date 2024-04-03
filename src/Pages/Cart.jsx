@@ -113,7 +113,6 @@ const Cart = () => {
                             ? "delete-model shadow p-3 rounded"
                             : "d-none"
                         }`}
-                        style={{width:'25%'}}
                       >
                         <div className="delete-dialog-box bg-white">
                           <div className="d-flex flex-column justify-content-center align-items-center">
@@ -157,7 +156,6 @@ const Cart = () => {
                         src={continueShopping}
                         alt="continueShopping"
                         className="continueShopping"
-                        style={{width:'30%'}}
                       />
                       <button
                         className="btn btn-warning"
