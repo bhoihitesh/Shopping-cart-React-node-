@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./cart.scss";
+import "./cart.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import veg from "../assets/images/icons8-veg-48.png";
