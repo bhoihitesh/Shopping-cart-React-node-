@@ -84,10 +84,12 @@
 /*** loader css end ***/
 @media screen and (width <= 767px) {
   /* delete model css */
-  .delete-model {
+  .delete-box {
+    position: fixed !important;
     top: 38% !important;
     left: 10% !important;
     width: 80% !important;
+    background-color: #fff !important;
   }
   /* continue shopping image css */
   .continueShopping {

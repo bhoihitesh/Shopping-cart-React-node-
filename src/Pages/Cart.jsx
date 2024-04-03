@@ -110,7 +110,7 @@ const Cart = () => {
                       <div
                         className={`${
                           openDelModel
-                            ? "delete-model shadow p-3 rounded"
+                            ? "delete-model shadow p-3 rounded delete-box"
                             : "d-none"
                         }`}
                       >
