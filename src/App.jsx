@@ -6,6 +6,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Home from "./Pages/Home.jsx";
 import { Route, Router, Routes } from "react-router-dom";
 import Cart from "./Pages/Cart.jsx";
+import Checkout from "./Pages/Checkout.jsx";
 const App = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/checkout/:id" element={<Checkout/>} />
       </Routes>
     </>
   )

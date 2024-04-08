@@ -34,7 +34,6 @@ const Home = () => {
     const cartProducts =
       response.status == "200" ? response.data.getCartProducts : "";
     const cartProductIds = cartProducts.map((product) => product._id);
-    console.log("cartProductIds", cartProductIds);
     const filteredProducts = cartProducts.filter((item) =>
       addtocart.includes(item._id)
     );
@@ -201,7 +200,7 @@ const Home = () => {
                             </p>
                           </div>
                           <div className="add-product d-flex gap-2">
-                            <button className="btn btn-outline-success rounded-pill px-4">
+                            <button className="btn btn-outline-success rounded-pill px-4" onClick={()=>navigate(`checkout/${item._id}`)}>
                               Buy
                             </button>
 
