@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 const Checkout = () => {
     const {id} = useParams();
-
+    const api = import.meta.env.VITE_API
     const ProductDetailApiCall = async() =>{
-        const res= await axios.get(`http://localhost:5000/api/get-product/${id}`);
+        const res= await axios.get(`${api}/get-product/${id}`);
     }
     ProductDetailApiCall()
   return (

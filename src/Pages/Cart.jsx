@@ -32,12 +32,9 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const removeCartitem = async () => {
-    let res = await axios.delete(
-      `http://localhost:5000/api/remove-cart-product`,
-      {
-        data: { delItemId },
-      }
-    );
+    let res = await axios.delete(`${api}/remove-cart-product`, {
+      data: { delItemId },
+    });
     res.status == "200" ? getProducts() : "";
     res.status == "200" ? setOpenDelModel(false) : "";
     res.status == "200" ? setLoading(false) : setLoading(true);
