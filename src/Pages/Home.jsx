@@ -162,10 +162,11 @@ const Home = () => {
                   <>
                     <div className="col-lg-3 col-md-6 col-sm-12 p-3">
                       <div className="card rounded-3 border-0" key={index + 1}>
-                        <img src={item.img} alt="img" className="rounded-2" />
+                        <img src={item.img} alt="img" className="rounded-2" onClick={()=>navigate(`/view-product/${item._id}`)} style={{cursor:'pointer'}}/>
                         <div
                           className="card-title product-name text-nowrap fw-normal"
-                          style={{ fontSize: "15px" }}
+                          style={{ fontSize: "15px",cursor:'pointer' }}
+                          onClick={()=>navigate(`/view-product/${item._id}`)}
                         >
                           {item.name}
                         </div>
