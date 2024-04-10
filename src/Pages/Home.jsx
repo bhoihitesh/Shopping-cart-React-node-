@@ -38,6 +38,7 @@ const Home = () => {
       addtocart.includes(item._id)
     );
     let res;
+    console.log("iterm",item)
     filteredProducts.length == 0
       ? (res = await axios.post(`${api}/add-to-cart`, {
           item,

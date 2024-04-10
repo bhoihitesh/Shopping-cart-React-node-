@@ -9,3 +9,8 @@
 .navbar-options {
   cursor: pointer;
 }
+@media screen and (width <= 767px){ 
+  .navbar-container {
+    padding-bottom: 20px !important;
+  }
+}

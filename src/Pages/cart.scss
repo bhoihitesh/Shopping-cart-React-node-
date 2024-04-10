@@ -85,7 +85,7 @@
 @media screen and (width <= 767px) {
   /* delete model css */
   .delete-box {
-    position: absolute !important;
+    position: fixed !important;
     top: 38% !important;
     left: 10% !important;
     width: 80% !important;

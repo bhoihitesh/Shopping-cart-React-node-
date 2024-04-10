@@ -9,3 +9,12 @@ p{
 .quantity-input{
     width: 10%;
 }
+
+@media screen and (width <= 767px){
+    .quantity-input{
+        width: 15%;
+    }   
+    .description-container{
+        padding-inline: 5px;
+    }
+}
