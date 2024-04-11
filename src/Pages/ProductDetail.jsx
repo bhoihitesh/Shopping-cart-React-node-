@@ -6,6 +6,7 @@ import "./productDetails.scss";
 const ProductDetail = () => {
   const [productData, setProductData] = useState([]);
   const [count, setCount] = useState(1);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
   const api = import.meta.env.VITE_API;
@@ -28,18 +29,36 @@ const ProductDetail = () => {
     }
   };
   const handleIncreaseCount = () => {
-    setCount(count + 1);
+    if (count == 0) {
+      setCount(1);
+    } else {
+      setCount(count + 1);
+    }
   };
   const handleDecreaseCount = () => {
-    const regx = /^\d+$/;
-    if (regx.test(count)) {
+    if (count == 0) {
       setCount(1);
+    } else {
+      setCount(count - 1);
     }
   };
   const handleAddtoCart = async () => {
     const postData = productData[0].getProduct;
-    const res = await axios.post(`${api}/add-to-cart`, { postData });
-    res.status == 200 ? navigate("/cart") : "";
+    // let res;
+    // loading
+    //   ? (res = await axios.post(`${api}/add-to-cart`, {
+    //       postData,
+    //     }))
+    //   : "";
+    console.warn("api",api);
+    let res;
+    let filteredProducts = 0;
+    filteredProducts == 0
+      ? (res = await axios.post(`${api}/add-to-cart`, {
+          postData,
+        }))
+      : setLoading(false);
+    res && res.status == 200 ? navigate("/cart") : "";
   };
   return (
     <>
@@ -64,7 +83,7 @@ const ProductDetail = () => {
                         <p className="m-0 p-0">
                           <span className="fs-5 fw-medium">₹</span>
                           <span className="fs-5 fw-medium">
-                            {mapData.price}
+                            {mapData.price * count}
                           </span>
                         </p>
                         <p className="fw-medium">
