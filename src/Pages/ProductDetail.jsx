@@ -44,21 +44,7 @@ const ProductDetail = () => {
   };
   const handleAddtoCart = async () => {
     const postData = productData[0].getProduct;
-    // let res;
-    // loading
-    //   ? (res = await axios.post(`${api}/add-to-cart`, {
-    //       postData,
-    //     }))
-    //   : "";
-    console.warn("api",api);
-    let res;
-    let filteredProducts = 0;
-    filteredProducts == 0
-      ? (res = await axios.post(`${api}/add-to-cart`, {
-          postData,
-        }))
-      : setLoading(false);
-    res && res.status == 200 ? navigate("/cart") : "";
+     navigate("/cart");
   };
   return (
     <>
