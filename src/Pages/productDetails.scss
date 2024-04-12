@@ -2,20 +2,32 @@
 p{
     margin: 0px;
 }
+.row{
+    margin: 0px;
+}
 .product-image{
     width: 100%;
 }
 .foodImage{
     width: 100%;
+    cursor: pointer;
 }
 
 .quantity-input{
     width: 10%;
 }
-
+.product-name {
+    max-width: 100%; /* Set maximum width */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
 @media screen and (width <= 767px){
     .quantity-input{
         width: 15%;
+    }
+    .foodImage{
+        width: 100%;
     }   
     .description-container{
         padding-inline: 5px;

@@ -71,10 +71,9 @@ const Home = () => {
     let searchFilter = APIData.filter((item) => {
       const name = item.name.toLowerCase().includes(value);
       const price = item.price.toString().includes(value);
-      const category = item.category.includes(value);
+      const category = item.category.toLowerCase().includes(value);
       const discount = item.discount.toString().includes(value);
-      const type = item.type.includes(value);
-
+      const type = item.type.toString().toLowerCase().includes(value);
       return category || price || name || discount || type;
     });
     setAllProduct(value == "" ? APIData : searchFilter);
@@ -155,76 +154,86 @@ const Home = () => {
             </div>
           ) : (
             <>
-              {allProduct.map((item, index) => {
-                return (
-                  <>
-                    <div className="col-lg-3 col-md-6 col-sm-12 p-3">
-                      <div className="card rounded-3 border-0" key={index + 1}>
-                        <img
-                          src={item.img}
-                          alt="img"
-                          className="rounded-2"
-                          onClick={() => navigate(`/view-product/${item._id}`)}
-                          style={{ cursor: "pointer" }}
-                        />
+              {allProduct.length > 0 ? (
+                allProduct.map((item, index) => {
+                  return (
+                    <>
+                      <div className="col-lg-3 col-md-6 col-sm-12 p-3">
                         <div
-                          className="card-title product-name text-nowrap fw-normal"
-                          style={{ fontSize: "15px", cursor: "pointer" }}
-                          onClick={() => navigate(`/view-product/${item._id}`)}
+                          className="card rounded-3 border-0"
+                          key={index + 1}
                         >
-                          {item.name}
-                        </div>
-                        {/* <div className="card-title product-category">{item.category}</div> */}
-                        <div className="product-price-section m-0 d-flex justify-content-between align-items-center">
-                          <div className="product-price">
-                            <p className="m-0 p-0">
-                              <span className="fs-5 fw-medium">₹</span>
-                              <span className="fs-5 fw-medium">
-                                {item.price}
-                              </span>
-                            </p>
-                            <p className="product-discount fs-6 fw-medium d-flex gap-1">
-                              {item.discount == "none"
-                                ? ""
-                                : item.discount + " OFF"}
-                              <div className="card-title product-type">
-                                {item.type == "veg" ? (
-                                  <img
-                                    src={veg}
-                                    alt="veg"
-                                    style={{ width: "20px" }}
-                                  />
-                                ) : (
-                                  <img
-                                    src={nonVeg}
-                                    alt="nonVeg"
-                                    style={{ width: "20px" }}
-                                  />
-                                )}
-                              </div>
-                            </p>
+                          <img
+                            src={item.img}
+                            alt="img"
+                            className="rounded-2"
+                            onClick={() =>
+                              navigate(`/view-product/${item._id}`)
+                            }
+                            style={{ cursor: "pointer" }}
+                          />
+                          <div
+                            className="card-title product-name text-nowrap fw-normal"
+                            style={{ fontSize: "15px", cursor: "pointer" }}
+                            onClick={() =>
+                              navigate(`/view-product/${item._id}`)
+                            }
+                          >
+                            {item.name}
                           </div>
-                          <div className="add-product d-flex gap-2">
-                            <button
-                              className="btn btn-outline-success rounded-pill px-4"
-                              onClick={() => navigate(`checkout/${item._id}`)}
-                            >
-                              Buy
-                            </button>
+                          <div className="product-price-section m-0 d-flex justify-content-between align-items-center">
+                            <div className="product-price">
+                              <p className="m-0 p-0">
+                                <span className="fs-5 fw-medium">₹</span>
+                                <span className="fs-5 fw-medium">
+                                  {item.price}
+                                </span>
+                              </p>
+                              <p className="product-discount fs-6 fw-medium d-flex gap-1">
+                                {item.discount == "none"
+                                  ? ""
+                                  : item.discount + " OFF"}
+                                <div className="card-title product-type">
+                                  {item.type == "veg" ? (
+                                    <img
+                                      src={veg}
+                                      alt="veg"
+                                      style={{ width: "20px" }}
+                                    />
+                                  ) : (
+                                    <img
+                                      src={nonVeg}
+                                      alt="nonVeg"
+                                      style={{ width: "20px" }}
+                                    />
+                                  )}
+                                </div>
+                              </p>
+                            </div>
+                            <div className="add-product d-flex gap-2">
+                              <button
+                                className="btn btn-outline-success rounded-pill px-4"
+                                onClick={() => navigate(`checkout/${item._id}`)}
+                              >
+                                Buy
+                              </button>
 
-                            <button
-                              className="btn btn-outline-warning rounded-pill px-4"
-                              onClick={() => handleAddcart(item)}
-                            >
-                              Add
-                            </button>
+                              <button
+                                className="btn btn-outline-warning rounded-pill px-4"
+                                onClick={() => handleAddcart(item)}
+                              >
+                                Add
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                );
-              })}
+                    </>
+                  );
+                })
+              ) : (
+                <p className="text-center fs-3 fw-medium">Product not found</p>
+              )}
             </>
           )}
         </div>

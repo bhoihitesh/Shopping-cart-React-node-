@@ -26,12 +26,14 @@ const ProductDetail = () => {
   }, [id]);
 
   const getProductByCategory = async () => {
-    const filterData = category.filter((e,i)=>e.category.includes(productData[0]&&productData[0].getProduct.category))
-    setCategoryData(filterData)
-  }
-  useEffect(()=>{
-    getProductByCategory()
-  },[productData])
+    const filterData = category.filter((e, i) =>
+      e.category.includes(productData[0] && productData[0].getProduct.category)
+    );
+    setCategoryData(filterData);
+  };
+  useEffect(() => {
+    getProductByCategory();
+  }, [productData]);
   const handleQuantityChange = (e) => {
     const { value } = e.target;
     const regx = /^\d+$/;
@@ -63,7 +65,7 @@ const ProductDetail = () => {
               {productData.map((item, i) => {
                 const mapData = item.getProduct;
                 return (
-                  <div key={i+1}>
+                  <div key={i + 1}>
                     <div className="product-image">
                       <img
                         src={mapData.img}
@@ -141,17 +143,45 @@ const ProductDetail = () => {
             <div className="more-product-container">
               <p className="pt-2 fs-4">More food items</p>
               <div className="row">
-                {categoryData.slice(0,3).map((item,i)=>{
-                 return(
-                  <div className="col-lg-4 col-sm-12" key={i+1}>
-                  <div className="p-lg-1">
-                    <div className="card border-0">
-                      <img src={item.img} alt="food-image" className="foodImage rounded-2" />
-                      <div className="title" style={{fontSize:'14px'}}>{item.name}</div>
+                {categoryData.slice(0, 3).map((item, i) => {
+                  return (
+                    <div className="col-lg-4 col-md-6 col-sm-12" key={i + 1}>
+                      <div className="card p-lg-1 p-md-2 border-0">
+                        <div className="card-title">
+                          <img  
+                            src={item.img}
+                            alt="food-image"
+                            className="foodImage rounded-2"
+                            onClick={() =>
+                              navigate(`/view-product/${item._id}`)
+                            }
+                          />
+                          <div
+                            className="card-title product-name fw-medium"
+                            style={{ fontSize: "16px", cursor: "pointer"  }}
+                            onClick={() =>
+                              navigate(`/view-product/${item._id}`)
+                            }
+                          >
+                            {item.name}
+                          </div>
+                        </div>
+                        <div className="card-title d-flex justify-content-between px-1">
+                          <button className="btn btn-outline-success">
+                            Buy
+                          </button>
+                          <button
+                            className="btn btn-outline-primary"
+                            onClick={() =>
+                              navigate(`/view-product/${item._id}`)
+                            }
+                          >
+                            View
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  </div>
-                 ) 
+                  );
                 })}
               </div>
             </div>
