@@ -6,19 +6,32 @@ import "./productDetails.scss";
 const ProductDetail = () => {
   const [productData, setProductData] = useState([]);
   const [count, setCount] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("");
+  const [categoryData, setCategoryData] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
   const api = import.meta.env.VITE_API;
   const ProductDetailApiCall = async () => {
     const res = await axios.get(`${api}/get-product/${id}`);
+    const response = await axios.get(`${api}/products`);
     const data = res.data;
-    setProductData([data]);
+    response.status == 200
+      ? setCategory(response.data.getProducts)
+      : setLoading(true);
+    res.status == 200 ? setProductData([data]) : setLoading(true);
   };
   useEffect(() => {
     ProductDetailApiCall();
   }, [id]);
-  console.warn("data", productData);
+
+  const getProductByCategory = async () => {
+    const filterData = category.filter((e,i)=>e.category.includes(productData[0]&&productData[0].getProduct.category))
+    setCategoryData(filterData)
+  }
+  useEffect(()=>{
+    getProductByCategory()
+  },[productData])
   const handleQuantityChange = (e) => {
     const { value } = e.target;
     const regx = /^\d+$/;
@@ -28,23 +41,18 @@ const ProductDetail = () => {
       setCount(value);
     }
   };
+  if (count == 0) {
+    setCount(1);
+  }
   const handleIncreaseCount = () => {
-    if (count == 0) {
-      setCount(1);
-    } else {
-      setCount(count + 1);
-    }
+    setCount(count + 1);
   };
   const handleDecreaseCount = () => {
-    if (count == 0) {
-      setCount(1);
-    } else {
-      setCount(count - 1);
-    }
+    setCount(count - 1);
   };
   const handleAddtoCart = async () => {
     const postData = productData[0].getProduct;
-     navigate("/cart");
+    navigate("/cart");
   };
   return (
     <>
@@ -55,7 +63,7 @@ const ProductDetail = () => {
               {productData.map((item, i) => {
                 const mapData = item.getProduct;
                 return (
-                  <>
+                  <div key={i+1}>
                     <div className="product-image">
                       <img
                         src={mapData.img}
@@ -107,7 +115,7 @@ const ProductDetail = () => {
                         +
                       </button>
                     </div>
-                  </>
+                  </div>
                 );
               })}
             </div>
@@ -130,7 +138,23 @@ const ProductDetail = () => {
                 corrupti, perferendis sapiente quidem! Repellendus, autem saepe.
               </p>
             </div>
-            <div className="more-product-container"></div>
+            <div className="more-product-container">
+              <p className="pt-2 fs-4">More food items</p>
+              <div className="row">
+                {categoryData.slice(0,3).map((item,i)=>{
+                 return(
+                  <div className="col-lg-4 col-sm-12" key={i+1}>
+                  <div className="p-lg-1">
+                    <div className="card border-0">
+                      <img src={item.img} alt="food-image" className="foodImage rounded-2" />
+                      <div className="title" style={{fontSize:'14px'}}>{item.name}</div>
+                    </div>
+                  </div>
+                  </div>
+                 ) 
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
