@@ -21,7 +21,8 @@ const App = () => {
   const isLoginPage = location.pathname.startsWith("/login");
   return (
     <>
-      {!isCheckoutPage && <Navbar />}
+      {/* {!isCheckoutPage && <Navbar />} */}
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
