@@ -147,7 +147,7 @@ const Home = () => {
             )}
           </div>
         </div>
-        <div className="row">
+        <div className="row" style={{height:'70vh'}}>
           {loading ? (
             <div className="d-grid justify-content-center align-items-center loader-div">
               <span className="loader"></span>
