@@ -1,0 +1,167 @@
+[{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec579"
+  },
+  "name": "Pan Asian Egg Chicken Chowmein",
+  "type": "non-veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/pHHVuBP7V5.jpg",
+  "discount": "50%",
+  "price": 249
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec576"
+  },
+  "name": "Chilli Garlic Chicken Noodles",
+  "type": "non-veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/upBvRtib32.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec57a"
+  },
+  "name": "Whole Wheat Corn Sandwich",
+  "type": "veg",
+  "category": "sandwich",
+  "img": "https://imagetolink.com/ib/kaqmYp66qg.jpg",
+  "discount": "none",
+  "price": 119
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec573"
+  },
+  "name": "Double Decker Moroccan Burger",
+  "type": "veg",
+  "category": "burger",
+  "img": "https://imagetolink.com/ib/EPuEKZizGb.jpg",
+  "discount": "20%",
+  "price": 149
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec57b"
+  },
+  "name": "Whole Wheat Chicken Sandwich",
+  "type": "non-veg",
+  "category": "sandwich",
+  "img": "https://imagetolink.com/ib/EPuEKZizGb.jpg",
+  "discount": "none",
+  "price": 129
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec574"
+  },
+  "name": "Peri Peri Paneer Steak Burger",
+  "type": "veg",
+  "category": "burger",
+  "img": "https://imagetolink.com/ib/IM7DoDQuWd.jpg",
+  "discount": "20%",
+  "price": 149
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec577"
+  },
+  "name": "Mixed Veg Hakka Noodles",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/5Nj1e7O9gT.jpg",
+  "discount": "35%",
+  "price": 199
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec575"
+  },
+  "name": "Double Decker Mexicano Chicken Burger",
+  "type": "non-veg",
+  "category": "burger",
+  "img": "https://imagetolink.com/ib/DhNelXmqEW.jpg",
+  "discount": "10%",
+  "price": 149
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec57c"
+  },
+  "name": "Whole Wheat Chicken Sandwich",
+  "type": "non-veg",
+  "category": "sandwich",
+  "img": "https://imagetolink.com/ib/G3fgwOHaqZ.jpg",
+  "discount": "none",
+  "price": 129
+},
+{
+  "_id": {
+    "$oid": "6601c50ec75bdc6f038ec578"
+  },
+  "name": "Dragon Noodles with Dumplings",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/CVhKf6rNfF.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Dragon Noodles with Dumplings",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/pmIGcCVgLG.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Hot Noodles Shoop",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/lenZwqzMR6.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Hot Noodles Shoop",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/adYs00GM1k.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Hot Noodles Shoop",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/uIFYDIKanu.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Hot Noodles Shoop",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/oD6ezWTKU4.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Hot Noodles Shoop",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/9FzfZGCKLN.jpg",
+  "discount": "50%",
+  "price": 149
+},
+{
+  "name": "Hot Noodles Shoop",
+  "type": "veg",
+  "category": "noodle",
+  "img": "https://imagetolink.com/ib/5jNEL91tad.jpg",
+  "discount": "50%",
+  "price": 149
+}
+]

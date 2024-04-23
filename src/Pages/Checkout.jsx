@@ -43,7 +43,7 @@ const Checkout = () => {
             <div className="col-md-7">
               <div className="card mb-4">
                 <div className="card-header py-3">
-                  <h5 className="mb-0">Cart - 2 items</h5>
+                  <h5 className="mb-0">Cart - {productData.length} items</h5>
                 </div>
                 <div className="cardBody">
                   {/* <!-- Single item --> */}

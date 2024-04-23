@@ -10,8 +10,11 @@
   align-items: center;
   height: auto;
   transition: 0.8s ease all;
+  z-index: 99;
 }
-
+.cart-image{
+  width: 150px;
+}
 /*** loader css start ***/
 .loader {
   animation: rotate 1s infinite;

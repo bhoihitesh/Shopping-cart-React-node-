@@ -15,6 +15,7 @@ import {
 import Cart from "./Pages/Cart.jsx";
 import Checkout from "./Pages/Checkout.jsx";
 import ProductDetail from "./Pages/ProductDetail.jsx";
+import Crickscore from "./Crickscore.jsx";
 const App = () => {
   const location = useLocation();
   const isCheckoutPage = location.pathname.startsWith("/checkout");
@@ -25,6 +26,7 @@ const App = () => {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/live-cricket-score" element={<Crickscore />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/view-product/:id" element={<ProductDetail />} />
         <Route path="/checkout/:id" element={<Checkout />} />

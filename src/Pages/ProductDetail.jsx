@@ -88,16 +88,16 @@ const ProductDetail = () => {
                         </p>
                       </div>
                       <div className="product-btns d-flex gap-2">
-                        <button className="btn btn-outline-success">Buy</button>
+                        {/* <button className="btn btn-outline-success" onClick={() => navigate(`checkout/${mapData._id}`)}>Buy</button> */}
                         <button
-                          className="btn btn-outline-warning"
+                          className="btn btn-warning"
                           onClick={() => handleAddtoCart()}
                         >
                           Add to cart
                         </button>
                       </div>
                     </div>
-                    <div className="quantity-btns d-flex justify-content-end gap-2 pt-2">
+                    {/* <div className="quantity-btns d-flex justify-content-end gap-2 pt-2">
                       <button
                         className="btn btn-outline-secondary fw-bold"
                         onClick={() => handleDecreaseCount()}
@@ -116,7 +116,7 @@ const ProductDetail = () => {
                       >
                         +
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 );
               })}
@@ -167,11 +167,11 @@ const ProductDetail = () => {
                           </div>
                         </div>
                         <div className="card-title d-flex justify-content-between px-1">
-                          <button className="btn btn-outline-success">
-                            Buy
+                          <button className="btn btn-warning">
+                            Add to cart
                           </button>
                           <button
-                            className="btn btn-outline-primary"
+                            className="btn btn-primary"
                             onClick={() =>
                               navigate(`/view-product/${item._id}`)
                             }

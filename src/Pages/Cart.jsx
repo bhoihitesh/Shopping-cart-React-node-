@@ -8,12 +8,15 @@ import checkOut from "../assets/images/icons8-checkout-30.png";
 import deleteProduct from "../assets/images/icons8-delete-30.png";
 import deleteProductPopup from "../assets/images/icons8-delete-48.png";
 import continueShopping from "../assets/images/Product hunt-bro.png";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus, FaTrash, FaHeart } from "react-icons/fa";
 const Cart = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [openDelModel, setOpenDelModel] = useState(false);
   const [emptyCart, setEmptyCart] = useState(true);
   const [delItemId, setDelItemId] = useState("");
   const [loading, setLoading] = useState(true);
+  const [count, setCount] = useState(1);
   const api = import.meta.env.VITE_API;
   const getProducts = async () => {
     let res = await axios.get(`${api}/cart-products`);
@@ -43,74 +46,160 @@ const Cart = () => {
     setDelItemId(item._id);
     setOpenDelModel(!openDelModel);
   };
+  const handleQuantityChange = (e) => {
+    const { value } = e.target;
+    const regx = /^\d+$/;
+    if (regx.test(count)) {
+      setCount(1);
+    } else {
+      setCount(value);
+    }
+  };
+  if (count == 0) {
+    setCount(1);
+  }
+  const handleIncreaseCount = (mapData) => {
+    console.log("mapodata", mapData);
+    const matchId = allProduct.forEach((e, i) => {
+      console.log("object", e._id == mapData._id);
+      if (e._id == mapData._id) {
+        setCount(count + 1);
+      }
+    });
+  };
+  const handleDecreaseCount = () => {
+    setCount(count - 1);
+  };
   return (
     <>
       <div className="container-fluid">
-        <div className="row" style={{height:'70vh'}}>
-          {loading ? (
-            <div className="d-grid justify-content-center align-items-center loader-div">
-              <span className="loader"></span>
+        <div className="row d-flex justify-content-around">
+          <div className="card mb-4 col-lg-8">
+            <div className="card-header py-3">
+              <h5 className="mb-0">Cart - {allProduct.length} items</h5>
             </div>
-          ) : (
-            <>
-              {allProduct.length > 0 ? (
-                allProduct.map((item, index) => {
+            <div className="cardBody">
+              {/* <!-- Single item --> */}
+              <div className="row d-flex justify-content-between align-item-center gap-4 p-4">
+                {allProduct.map((item, i) => {
+                  const mapData = item;
                   return (
                     <>
-                      <div className="col-lg-3 col-md-6 col-sm-12 p-3">
+                      <div className="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                        {/* <!-- Image --> */}
                         <div
-                          className="card rounded-3 border-0"
-                          key={index + 1}
+                          className="bg-image hover-overlay hover-zoom ripple rounded"
+                          data-mdb-ripple-color="light"
                         >
-                          <img src={item.img} alt="img" className="rounded-2" />
-                          <div
-                            className="card-title product-name text-nowrap fw-normal"
-                            style={{ fontSize: "15px" }}
-                          >
-                            {item.name}
-                          </div>
-                          {/* <div className="card-title product-category">{item.category}</div> */}
-                          <div className="product-price-section m-0 d-flex justify-content-between align-items-center">
-                            <div className="product-price">
-                              <p className="m-0 p-0">
-                                <span className="fs-5 fw-medium">₹</span>
-                                <span className="fs-5 fw-medium">
-                                  {item.price}
-                                </span>
-                              </p>
-                              <p className="product-discount fs-6 fw-medium d-flex gap-1">
-                                {item.discount + " OFF"}
-                                <div className="card-title product-type">
-                                  {item.type == "veg" ? (
-                                    <img
-                                      src={veg}
-                                      alt="veg"
-                                      style={{ width: "20px" }}
-                                    />
-                                  ) : (
-                                    <img
-                                      src={nonVeg}
-                                      alt="nonVeg"
-                                      style={{ width: "20px" }}
-                                    />
-                                  )}
-                                </div>
-                              </p>
-                            </div>
-                            <div className="add-product d-flex gap-2">
-                              <button className="btn p-0 m-0">
-                                <img src={checkOut} alt="checkout product" />
-                              </button>
-                              <button
-                                className="btn p-0 m-0"
-                                onClick={() => handleOpenDeletemodel(item)}
-                              >
-                                <img src={deleteProduct} alt="delete product" />
-                              </button>
-                            </div>
-                          </div>
+                          <img
+                            src={mapData.img}
+                            className="w-100 rounded-2"
+                            alt="Blue Jeans Jacket"
+                          />
+                          <a href="#!">
+                            <div
+                              className="mask"
+                              style={{
+                                backgroundColor: "rgba(251, 251, 251, 0.2)",
+                              }}
+                            ></div>
+                          </a>
                         </div>
+                        {/* <!-- Image --> */}
                       </div>
+
+                      <div className="col-lg-3 col-md-6 mb-4 mb-lg-0 d-flex flex-column justify-content-between">
+                        {/* <!-- Data --> */}
+                        <div className="product-name">
+                          <p>
+                            <strong>{mapData.name}</strong>
+                          </p>
+                            <strong className="fw-medium">Description</strong>
+                        </div>
+                          <p className="">
+                            
+                              Lorem ipsum dolor sit amet consectetur adipisicing...
+                            
+                          </p>
+                        <div className="product-btns d-flex justify-content-between">
+                          <button
+                            type="button"
+                            data-mdb-button-init
+                            data-mdb-ripple-init
+                            className="btn btn-primary btn-sm me-1 mb-2"
+                            data-mdb-tooltip-init
+                            title="Remove item"
+                            onClick={() => handleOpenDeletemodel(mapData)}
+                          >
+                            <FaTrash />
+                          </button>
+                          <button
+                            type="button"
+                            data-mdb-button-init
+                            data-mdb-ripple-init
+                            className="btn btn-danger btn-sm mb-2"
+                            data-mdb-tooltip-init
+                            title="Move to the wish list"
+                          >
+                            <FaHeart />
+                          </button>
+                        </div>
+                        {/* <!-- Data --> */}
+                      </div>
+
+                      <div className="col-lg-4 col-md-6 mb-4 mb-lg-0 m-auto">
+                        {/* <!-- Quantity --> */}
+                        <div
+                          className="d-flex mb-2"
+                          style={{ maxWidth: "300px" }}
+                        >
+                          <button
+                            data-mdb-button-init
+                            data-mdb-ripple-init
+                            className="btn btn-primary px-3 me-2"
+                            onClick={() => handleDecreaseCount()}
+                          >
+                            <FaMinus />
+                          </button>
+
+                          <div data-mdb-input-init className="form-outline">
+                            <input
+                              id="form1"
+                              min="0"
+                              name="quantity"
+                              value={count}
+                              type="text"
+                              className="form-control text-center"
+                              onChange={(e) => handleQuantityChange(e)}
+                            />
+                            <label
+                              className="form-label fw-medium text-center w-100"
+                              htmlFor="form1"
+                            >
+                              Quantity
+                            </label>
+                          </div>
+
+                          <button
+                            data-mdb-button-init
+                            data-mdb-ripple-init
+                            className="btn btn-primary px-3 ms-2"
+                            onClick={() => handleIncreaseCount(mapData)}
+                          >
+                            <FaPlus />
+                          </button>
+                        </div>
+                        {/* <!-- Quantity --> */}
+
+                        {/* <!-- Price --> */}
+                        <p className="text-start text-md-center">
+                          <strong className="fs-5">
+                            ₹{mapData.price * count}
+                          </strong>
+                        </p>
+                        {/* <!-- Price --> */}
+                      </div>
+
                       {/* delete model */}
                       <div
                         className={`${
@@ -148,32 +237,51 @@ const Cart = () => {
                       </div>
                     </>
                   );
-                })
-              ) : (
-                <>
-                  {emptyCart ? (
-                    <div className="d-grid justify-content-center align-items-center loader-div">
-                      <span className="loader"></span>
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4">
+            <div className="card mb-4">
+              <div className="card-header py-3">
+                <h5 className="mb-0">Summary</h5>
+              </div>
+              <div className="card-body">
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                    Products
+                    {/* <span>₹{mapData.price}</span> */}
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between align-items-center px-0">
+                    Shipping
+                    <span>Gratis</span>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                    <div>
+                      <strong>Total amount</strong>
+                      <strong>
+                        <p className="mb-0">(including GST)</p>
+                      </strong>
                     </div>
-                  ) : (
-                    <div className="d-flex flex-column align-items-center">
-                      <img
-                        src={continueShopping}
-                        alt="continueShopping"
-                        className="continueShopping"
-                      />
-                      <button
-                        className="btn btn-warning"
-                        onClick={() => navigate("/")}
-                      >
-                        Continue shopping
-                      </button>
-                    </div>
-                  )}
-                </>
-              )}
-            </>
-          )}
+                    <span>
+                      {/* <strong>₹{mapData.price * count}</strong> */}
+                    </span>
+                  </li>
+                </ul>
+
+                <button
+                  type="button"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  className="btn btn-primary btn-lg btn-block fs-5"
+                  disabled
+                >
+                  Go to checkout
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

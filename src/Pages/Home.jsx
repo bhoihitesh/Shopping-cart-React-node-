@@ -127,6 +127,15 @@ const Home = () => {
                       <a
                         className="dropdown-item"
                         href="#"
+                        onClick={() => setProductCategory("pasta")}
+                      >
+                        Pasta
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="#"
                         onClick={() => setProductCategory("noodle")}
                       >
                         Noodle
@@ -156,6 +165,7 @@ const Home = () => {
             <>
               {allProduct.length > 0 ? (
                 allProduct.map((item, index) => {
+                  console.log('item',item.img)
                   return (
                     <>
                       <div className="col-lg-3 col-md-6 col-sm-12 p-3">
@@ -170,7 +180,7 @@ const Home = () => {
                             onClick={() =>
                               navigate(`/view-product/${item._id}`)
                             }
-                            style={{ cursor: "pointer" }}
+                            style={{ cursor: "pointer",height:'28vh' }}
                           />
                           <div
                             className="card-title product-name text-nowrap fw-normal"
