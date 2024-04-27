@@ -2,22 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./cart.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import veg from "../assets/images/icons8-veg-48.png";
-import nonVeg from "../assets/images/icons8-non-veg-48.png";
 import checkOut from "../assets/images/icons8-checkout-30.png";
 import deleteProduct from "../assets/images/icons8-delete-30.png";
 import deleteProductPopup from "../assets/images/icons8-delete-48.png";
 import continueShopping from "../assets/images/Product hunt-bro.png";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus, FaTrash, FaHeart } from "react-icons/fa";
+import addNotification from "react-push-notification";
+import { Notifications } from "react-push-notification";
 const Cart = () => {
+  
   const [allProduct, setAllProduct] = useState([]);
   const [openDelModel, setOpenDelModel] = useState(false);
   const [emptyCart, setEmptyCart] = useState(true);
   const [delItemId, setDelItemId] = useState("");
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(1);
+  // const [totalPrice, setTotalPrice] = useState('');
+  const navigate = useNavigate();
   const api = import.meta.env.VITE_API;
+  let totalPrice = 0;
   const getProducts = async () => {
     let res = await axios.get(`${api}/cart-products`);
     res.status == "200" ? setLoading(false) : setLoading(true);
@@ -32,7 +36,6 @@ const Cart = () => {
   setInterval(() => {
     setEmptyCart(false);
   }, 2000);
-  const navigate = useNavigate();
 
   const removeCartitem = async () => {
     let res = await axios.delete(`${api}/remove-cart-product`, {
@@ -46,29 +49,70 @@ const Cart = () => {
     setDelItemId(item._id);
     setOpenDelModel(!openDelModel);
   };
-  const handleQuantityChange = (e) => {
-    const { value } = e.target;
-    const regx = /^\d+$/;
-    if (regx.test(count)) {
-      setCount(1);
-    } else {
-      setCount(value);
-    }
+  // const handleQuantityChange = (e) => {
+  //   const { value } = e.target;
+  //   const regx = /^\d+$/;
+  //   if (regx.test(count)) {
+  //     setCount(1);
+  //   } else {
+  //     setCount(value);
+  //   }
+  // };
+  // const handleIncreaseCount = (mapData) => {
+  //   console.log("mapodata", mapData);
+  //   const matchId = allProduct.forEach((e, i) => {
+  //     console.log("object", e._id == mapData._id);
+  //     if (e._id == mapData._id) {
+  //       setCount(count + 1);
+  //     }
+  //   });
+  // };
+  const handleDecreaseCount = (itemId, newQuantity) => {
+    setAllProduct((prevProducts) =>
+      prevProducts.map((product) => {
+        return product._id == itemId._id
+          ? { ...product, quantity: newQuantity - 1 }
+          : product;
+      })
+    );
   };
-  if (count == 0) {
-    setCount(1);
-  }
-  const handleIncreaseCount = (mapData) => {
-    console.log("mapodata", mapData);
-    const matchId = allProduct.forEach((e, i) => {
-      console.log("object", e._id == mapData._id);
-      if (e._id == mapData._id) {
-        setCount(count + 1);
-      }
+
+  const handleQuantityChange = (itemId, newQuantity) => {
+    setAllProduct((prevProducts) =>
+      prevProducts.map((product) => {
+        return product._id == itemId._id
+          ? { ...product, quantity: newQuantity + 1 }
+          : product;
+      })
+    );
+  };
+
+  // Function to calculate total price
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    allProduct.forEach((item) => {
+      totalPrice += item.price * (item.quantity || 1);
     });
+    return Math.floor(totalPrice);
   };
-  const handleDecreaseCount = () => {
-    setCount(count - 1);
+
+  const handleCheckout = () => {
+    console.log("added")
+    addNotification({
+      title: "Warning",
+      subtitle: "This is a subtitle",
+      message: "This is a very long message",
+      theme: "darkblue",
+      native: false, // when using native, your OS will handle theming.
+    });
+
+    console.log("Notifications",addNotification({
+      title: "Warning",
+      subtitle: "This is a subtitle",
+      message: "This is a very long message",
+      theme: "darkblue",
+      native: false, // when using native, your OS will handle theming.
+    }))
   };
   return (
     <>
@@ -83,6 +127,10 @@ const Cart = () => {
               <div className="row d-flex justify-content-between align-item-center gap-4 p-4">
                 {allProduct.map((item, i) => {
                   const mapData = item;
+                  const quantity =
+                    mapData.quantity == undefined ? 1 : mapData.quantity;
+                  const price = mapData.price * quantity;
+                  totalPrice = price;
                   return (
                     <>
                       <div className="col-lg-4 col-md-12 mb-4 mb-lg-0">
@@ -114,13 +162,11 @@ const Cart = () => {
                           <p>
                             <strong>{mapData.name}</strong>
                           </p>
-                            <strong className="fw-medium">Description</strong>
+                          <strong className="fw-medium">Description</strong>
                         </div>
-                          <p className="">
-                            
-                              Lorem ipsum dolor sit amet consectetur adipisicing...
-                            
-                          </p>
+                        <p className="">
+                          Lorem ipsum dolor sit amet consectetur adipisicing...
+                        </p>
                         <div className="product-btns d-flex justify-content-between">
                           <button
                             type="button"
@@ -157,7 +203,10 @@ const Cart = () => {
                             data-mdb-button-init
                             data-mdb-ripple-init
                             className="btn btn-primary px-3 me-2"
-                            onClick={() => handleDecreaseCount()}
+                            onClick={() =>
+                              handleDecreaseCount(mapData, quantity)
+                            }
+                            disabled={quantity == 1}
                           >
                             <FaMinus />
                           </button>
@@ -167,7 +216,7 @@ const Cart = () => {
                               id="form1"
                               min="0"
                               name="quantity"
-                              value={count}
+                              value={quantity}
                               type="text"
                               className="form-control text-center"
                               onChange={(e) => handleQuantityChange(e)}
@@ -184,7 +233,9 @@ const Cart = () => {
                             data-mdb-button-init
                             data-mdb-ripple-init
                             className="btn btn-primary px-3 ms-2"
-                            onClick={() => handleIncreaseCount(mapData)}
+                            onClick={() =>
+                              handleQuantityChange(mapData, quantity)
+                            }
                           >
                             <FaPlus />
                           </button>
@@ -194,7 +245,8 @@ const Cart = () => {
                         {/* <!-- Price --> */}
                         <p className="text-start text-md-center">
                           <strong className="fs-5">
-                            ₹{mapData.price * count}
+                            {/* ₹{mapData.price * mapData?.quantity || 1} */}₹
+                            {price}
                           </strong>
                         </p>
                         {/* <!-- Price --> */}
@@ -250,18 +302,28 @@ const Cart = () => {
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                    Products
-                    {/* <span>₹{mapData.price}</span> */}
+                    Total price
+                    <span>₹{calculateTotalPrice()}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                    Shipping
-                    <span>Gratis</span>
+                    Shipping charges
+                    <span>₹0</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                    <div>
-                      <strong>Total amount</strong>
+                    <div className="w-100">
+                      <strong className="d-flex justify-content-between w-100">
+                        Total amount{" "}
+                        <p>
+                          ₹
+                          {Math.floor(
+                            calculateTotalPrice() +
+                              (calculateTotalPrice() * 18) / 100
+                          )}
+                        </p>
+                      </strong>
+                      {/* <strong></strong> */}
                       <strong>
-                        <p className="mb-0">(including GST)</p>
+                        <p className="mb-0">(including GST 18%)</p>
                       </strong>
                     </div>
                     <span>
@@ -275,14 +337,16 @@ const Cart = () => {
                   data-mdb-button-init
                   data-mdb-ripple-init
                   className="btn btn-primary btn-lg btn-block fs-5"
-                  disabled
+                  onClick={() => handleCheckout()}
                 >
                   Go to checkout
                 </button>
+                {/* <p className="text-danger">comming soon!</p> */}
               </div>
             </div>
           </div>
         </div>
+        <Notifications />
       </div>
     </>
   );

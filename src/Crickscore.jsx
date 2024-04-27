@@ -23,17 +23,10 @@ const Crickscore = () => {
       }
     };
 
-    cricketScores();
+    // cricketScores();
   }, []); // Empty dependency array to ensure useEffect runs only once
 
-  console.log("api req",matchScore)
-  const a = "A Online Computer Science Portal for Geeks";
-  const b = isNaN;
-  const c = null;
-
-  console.log("adding", a);
-  // console.log("adding", typeof(a), typeof(b), typeof(c));
-
+  // console.log("api req", matchScore);
   return (
     <>
       <div className="container-fluid">
