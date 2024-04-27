@@ -94,26 +94,7 @@ const Cart = () => {
       totalPrice += item.price * (item.quantity || 1);
     });
     return Math.floor(totalPrice);
-  };
-
-  const handleCheckout = () => {
-    console.log("added")
-    addNotification({
-      title: "Warning",
-      subtitle: "This is a subtitle",
-      message: "This is a very long message",
-      theme: "darkblue",
-      native: false, // when using native, your OS will handle theming.
-    });
-
-    console.log("Notifications",addNotification({
-      title: "Warning",
-      subtitle: "This is a subtitle",
-      message: "This is a very long message",
-      theme: "darkblue",
-      native: false, // when using native, your OS will handle theming.
-    }))
-  };
+  };  
   return (
     <>
       <div className="container-fluid">
@@ -337,16 +318,14 @@ const Cart = () => {
                   data-mdb-button-init
                   data-mdb-ripple-init
                   className="btn btn-primary btn-lg btn-block fs-5"
-                  onClick={() => handleCheckout()}
                 >
                   Go to checkout
                 </button>
-                {/* <p className="text-danger">comming soon!</p> */}
+                <p className="text-danger">comming soon!</p>
               </div>
             </div>
           </div>
         </div>
-        <Notifications />
       </div>
     </>
   );
