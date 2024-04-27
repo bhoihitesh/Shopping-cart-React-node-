@@ -94,6 +94,7 @@ const Cart = () => {
       totalPrice += item.price * (item.quantity || 1);
     });
     return Math.floor(totalPrice);
+    
   };  
   return (
     <>
