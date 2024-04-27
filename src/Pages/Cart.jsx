@@ -8,8 +8,6 @@ import deleteProductPopup from "../assets/images/icons8-delete-48.png";
 import continueShopping from "../assets/images/Product hunt-bro.png";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus, FaTrash, FaHeart } from "react-icons/fa";
-import addNotification from "react-push-notification";
-import { Notifications } from "react-push-notification";
 const Cart = () => {
   
   const [allProduct, setAllProduct] = useState([]);
