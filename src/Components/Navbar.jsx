@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.scss";
-import brand from "../assets/logo/brand.png";
+import brand from "../assets/logo/icons8-burger-king.svg";
 import cart from "../assets/images/icons8-cart-24.png";
 import notification from "../assets/images/icons8-bell-24.png";
 import { RiMenu2Line } from "react-icons/ri";
@@ -24,7 +24,7 @@ const Navbar = () => {
           <div className="col-lg-12 col-mf-6 col-sm-12 d-flex justify-content-start align-items-center">
             <div className="navbar-container d-flex justify-content-between align-items-center w-100 px-1 flex-sm-row flex-column">
               <div className="navbar-brand d-flex justify-content-between align-items-center w-100 px-2">
-                <img src={brand} alt="brand" />
+                <img src={brand} alt="brand" className="pt-2" width={100}/>
                 <RiMenu2Line
                   className="fs-1 d-sm-none"
                   onClick={() => setToggleNavbar(!toggleNavbar)}
