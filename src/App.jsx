@@ -39,7 +39,7 @@ const App = () => {
   return (
     <>
       {/* {!isCheckoutPage && <Navbar />} */}
-      {/* {splashBack ? navigate('/home') : navigate('/')} */}
+      {/* {splashBack ? navigate('/home') : navigate('/')} */}  
       {splashBack ? (
         <>
           <Navbar />
