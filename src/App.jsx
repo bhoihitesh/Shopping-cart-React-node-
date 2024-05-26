@@ -27,7 +27,7 @@ const App = () => {
     setTimeout(() => {
       setSplashBack(true);
       navigate("/home");
-    }, 50000);
+    }, 5000);
     
     if(splashBack){
       navigate("/home");
