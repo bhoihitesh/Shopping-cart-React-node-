@@ -9,14 +9,12 @@ import continueShopping from "../assets/images/Product hunt-bro.png";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus, FaTrash, FaHeart } from "react-icons/fa";
 const Cart = () => {
-  
   const [allProduct, setAllProduct] = useState([]);
   const [openDelModel, setOpenDelModel] = useState(false);
   const [emptyCart, setEmptyCart] = useState(true);
   const [delItemId, setDelItemId] = useState("");
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(1);
-  // const [totalPrice, setTotalPrice] = useState('');
   const navigate = useNavigate();
   const api = import.meta.env.VITE_API;
   let totalPrice = 0;
@@ -47,24 +45,6 @@ const Cart = () => {
     setDelItemId(item._id);
     setOpenDelModel(!openDelModel);
   };
-  // const handleQuantityChange = (e) => {
-  //   const { value } = e.target;
-  //   const regx = /^\d+$/;
-  //   if (regx.test(count)) {
-  //     setCount(1);
-  //   } else {
-  //     setCount(value);
-  //   }
-  // };
-  // const handleIncreaseCount = (mapData) => {
-  //   console.log("mapodata", mapData);
-  //   const matchId = allProduct.forEach((e, i) => {
-  //     console.log("object", e._id == mapData._id);
-  //     if (e._id == mapData._id) {
-  //       setCount(count + 1);
-  //     }
-  //   });
-  // };
   const handleDecreaseCount = (itemId, newQuantity) => {
     setAllProduct((prevProducts) =>
       prevProducts.map((product) => {
@@ -92,8 +72,7 @@ const Cart = () => {
       totalPrice += item.price * (item.quantity || 1);
     });
     return Math.floor(totalPrice);
-    
-  };  
+  };
   return (
     <>
       <div className="container-fluid">
@@ -224,10 +203,7 @@ const Cart = () => {
 
                         {/* <!-- Price --> */}
                         <p className="text-start text-md-center">
-                          <strong className="fs-5">
-                            {/* ₹{mapData.price * mapData?.quantity || 1} */}₹
-                            {price}
-                          </strong>
+                          <strong className="fs-5">{price}</strong>
                         </p>
                         {/* <!-- Price --> */}
                       </div>
@@ -300,15 +276,9 @@ const Cart = () => {
                               (calculateTotalPrice() * 18) / 100
                           )}
                         </p>
-                      </strong>
-                      {/* <strong></strong> */}
-                      <strong>
                         <p className="mb-0">(including GST 18%)</p>
                       </strong>
                     </div>
-                    <span>
-                      {/* <strong>₹{mapData.price * count}</strong> */}
-                    </span>
                   </li>
                 </ul>
 
