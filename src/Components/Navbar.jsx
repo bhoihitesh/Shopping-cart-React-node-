@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.scss";
-import brand from "../assets/logo/icons8-burger-king.svg";
+import brand from "../assets/logo/brand.png";
 import cart from "../assets/images/icons8-cart-24.png";
 import notification from "../assets/images/icons8-bell-24.png";
 import { RiMenu2Line } from "react-icons/ri";
@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleNavigate = () => {
     // setToggleNavbar(false);
-    navigate("/");
+    navigate("/home");
   };
   const handleCartNavigate = () => {
     // setToggleNavbar(false);
@@ -24,7 +24,7 @@ const Navbar = () => {
           <div className="col-lg-12 col-mf-6 col-sm-12 d-flex justify-content-start align-items-center">
             <div className="navbar-container d-flex justify-content-between align-items-center w-100 px-1 flex-sm-row flex-column">
               <div className="navbar-brand d-flex justify-content-between align-items-center w-100 px-2">
-                <img src={brand} alt="brand" className="pt-2" width={100}/>
+                <img src={brand} alt="brand" className="pt-2 brand-logo" />
                 <RiMenu2Line
                   className="fs-1 d-sm-none"
                   onClick={() => setToggleNavbar(!toggleNavbar)}
@@ -32,52 +32,51 @@ const Navbar = () => {
               </div>
               <div
                 className={`${
-                  toggleNavbar ? "d-none" : "d-block navbar-list-option "
+                  toggleNavbar ? "navbar-container-option" : "hide-navbar defualt-navbar"
                 }`}
               >
-                <ul className="list-group d-flex flex-row align-items-center flex-sm-row flex-column">
-                  <li
-                    className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                    onClick={() => handleNavigate()}
-                  >
-                    Home
-                  </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
-                    Products
-                  </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
-                    Services
-                  </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
-                    Contact us
-                  </li>
-                  <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options">
-                    About us
-                  </li>
-                </ul>
-              </div>
-
-              <div
-                className={`${
-                  toggleNavbar
-                    ? "d-none"
-                    : "navbar-cart-notification-container d-flex justify-content-between align-items-center gap-2"
-                }`}
-              >
-                <div className="cart-section">
-                  <img
-                    src={cart}
-                    alt="cart"
-                    className="navbar-options"
-                    onClick={() => handleCartNavigate()}
-                  />
+                <div className="navbar-list-option">
+                  <ul className="list-group flex-sm-row flex-column">
+                    <li
+                      className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={() => navigate("/home")}
+                    >
+                      Home
+                    </li>
+                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={()=>navigate("/product")}
+                    >
+                      Products
+                    </li>
+                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={()=>navigate("/faq")}
+                    >
+                      Faq
+                    </li>
+                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={()=>navigate("/contact")}
+                    >
+                      Contact
+                    </li>
+                  </ul>
                 </div>
-                <div className="notification-section">
-                  <img
-                    src={notification}
-                    alt="notification"
-                    className="navbar-options"
-                  />
+
+                <div className="navbar-cart-notification-container">
+                  <div className="cart-section">
+                    <img
+                      src={cart}
+                      alt="cart"
+                      className="navbar-options"
+                      onClick={() => handleCartNavigate()}
+                    />
+                  </div>
+                  <div className="notification-section">
+                    <img
+                      src={notification}
+                      alt="notification"
+                      className="navbar-options"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

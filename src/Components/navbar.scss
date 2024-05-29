@@ -4,13 +4,71 @@
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
-
-// navbar options
+.navbar-container-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+  height: 210px;
+}
 .navbar-options {
   cursor: pointer;
 }
-@media screen and (width <= 767px){ 
-  .navbar-container {
-    padding-bottom: 20px !important;
+.navbar-list-option {
+  width: 100%;
+}
+.list-group{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.brand-logo{
+  width: 150px;
+}
+.hide-navbar-menuIcons {
+  display: flex;
+  gap: 5px;
+}
+.navbar-cart-notification-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.defualt-navbar{
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+}
+@media screen and (width <= 767px) {
+  .navbar-list-option {
+    width: 100%;
+    height: 160px;
+    transition: 0.5s all ease-in;
+  }
+  .defualt-navbar{
+    display: flex;
+    flex-direction: column !important;
+  }
+  .hide-navbar {
+    width: 100%;
+    height: 0px;
+    opacity: 0;
+    transition: 0.5s all ease-out;
+  }
+  .navbar-container-option {
+    flex-direction: column;
+    padding-right: 0px;
+    transition: 0.5s all ease-out;
+  }
+  .navbar-cart-notification-container {
+    transition: 0.5s all ease-in;
+  }
+  .hide-navbar-menuIcons {
+    height: 0px;
+    opacity: 0;
+    transition: 0.5s all ease-out;
+    display: flex;
+    gap: 10px;
   }
 }

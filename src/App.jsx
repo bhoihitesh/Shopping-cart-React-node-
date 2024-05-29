@@ -17,6 +17,7 @@ import Checkout from "./Pages/Checkout.jsx";
 import ProductDetail from "./Pages/ProductDetail.jsx";
 import Crickscore from "./Crickscore.jsx";
 import Splash from "./Components/Splash.jsx";
+import Product from "./Pages/Product.jsx";
 const App = () => {
   const [splashBack, setSplashBack] = useState(false);
   const location = useLocation();
@@ -46,6 +47,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Splash />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/product" element={<Product />} />
             <Route path="/live-cricket-score" element={<Crickscore />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/view-product/:id" element={<ProductDetail />} />

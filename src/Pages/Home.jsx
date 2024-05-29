@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
-import "./home.scss";
+import "./product.scss";
+import image1 from "../assets/images/delicious-food-table.jpg";
+import image2 from "../assets/images/freshly-baked-naan-bread-rustic-wood-bowl-generated-by-ai.jpg";
+import image3 from "../assets/images/photo-traditional-indian-food-dish-celebrate-diwali.jpg";
+import ingredients from "../assets//images/flat-lay-flexitarian-diet-pot.png";
+import deliciouse from "../assets/images/flexitarian-diet-pot-view.png";
+import specialDish1 from "../assets/images/pexels-foodie-factor-162291-539451.jpg";
 import axios from "axios";
-import veg from "../assets/images/icons8-veg-48.png";
-import nonVeg from "../assets/images/icons8-non-veg-48.png";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useGetFoodItemsQuery } from "../api/apiSlice";
 const Home = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [APIData, setAPIData] = useState([]);
   const [productCategory, setProductCategory] = useState("all");
-  const [searchFood, setSearchFood] = useState("");
   const [loading, setLoading] = useState(true);
-  const [addCart, setAddCart] = useState(false);
+
   const api = import.meta.env.VITE_API;
+
+  const { data, isLoading } = useGetFoodItemsQuery();
   const getProducts = async () => {
     let res = await axios.get(`${api}/products`);
     res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
@@ -23,232 +26,266 @@ const Home = () => {
 
   useEffect(() => {
     getProducts();
+    isLoading ? setLoading(true) : setAPIData(data.getProducts);
   }, []);
-
-  const navigate = useNavigate();
-
-  // handle add to cart function
-  const handleAddcart = async (item) => {
-    const addtocart = item._id;
-    const response = await axios.get(`${api}/cart-products`);
-    const cartProducts =
-      response.status == "200" ? response.data.getCartProducts : "";
-    const filteredProducts = cartProducts.filter((item) =>
-      addtocart.includes(item._id)
-    );
-    let res;
-    filteredProducts.length == 0
-      ? (res = await axios.post(`${api}/add-to-cart`, {
-          item,
-        }))
-      : setLoading(false);
-    if (filteredProducts.length == 1) {
-      setAddCart(true);
-      toast.warning("Already added to the cart !");
-      setTimeout(() => {
-        setAddCart(false);
-      }, 1000);
-    } else {
-      // Product already exists in the cart
-      toast.success("Successfully added to the cart !");
-      setTimeout(() => {
-        navigate("/cart");
-      }, 3000);
-    }
-
-    filteredProducts.length == 1 ? setLoading(false) : setLoading(true);
-  };
-  useEffect(() => {
-    const filterData = APIData.filter(
-      (item) => item.category == productCategory
-    );
-    setAllProduct(filterData);
-  }, [productCategory]);
-
-  // search filter
-  const handleSearchFilter = (e) => {
-    const { value } = e.target;
-    let searchFilter = APIData.filter((item) => {
-      const name = item.name.toLowerCase().includes(value);
-      const price = item.price.toString().includes(value);
-      const category = item.category.toLowerCase().includes(value);
-      const discount = item.discount.toString().includes(value);
-      const type = item.type.toString().toLowerCase().includes(value);
-      return category || price || name || discount || type;
-    });
-    setAllProduct(value == "" ? APIData : searchFilter);
-    setSearchFood(value);
-  };
+  console.warn("data", APIData);
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid home-container">
+        {/* Food carusel section */}
         <div className="row">
-          <div className="col-12">
-            {loading ? (
-              ""
-            ) : (
-              <div className="searchbar-container w-100 d-flex justify-content-end align-items-center gap-4">
-                <input
-                  type="text"
-                  className="form-control searchbar-input"
-                  value={searchFood}
-                  placeholder="Search food by category..."
-                  onChange={(e) => handleSearchFilter(e)}
-                />
-                <div className="dropdown">
+          <div className="col-xl-12">
+            <div className="carousel-container">
+              <div
+                id="carouselExampleDark"
+                className="carousel carousel-dark slide"
+                data-bs-ride="carousel"
+              >
+                <div className="carousel-indicators">
                   <button
-                    className="btn bg-light dropdown-toggle"
                     type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Category
-                  </button>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={() => setAllProduct(APIData)}
-                      >
-                        All
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={() => setProductCategory("burger")}
-                      >
-                        Burger
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={() => setProductCategory("pasta")}
-                      >
-                        Pasta
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={() => setProductCategory("noodle")}
-                      >
-                        Noodle
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={() => setProductCategory("sandwich")}
-                      >
-                        Sandwich
-                      </a>
-                    </li>
-                  </ul>
+                    data-bs-target="#carouselExampleDark"
+                    data-bs-slide-to="0"
+                    className="active bg-white"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleDark"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                    className="bg-white"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleDark"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                    className="bg-white"
+                  ></button>
                 </div>
+                <div className="carousel-inner">
+                  <div
+                    className="carousel-item food-item1 active"
+                    data-bs-interval="10000"
+                  >
+                    <img src={image1} className="d-block w-100" alt="..." />
+                    <div className="carousel-caption d-md-block">
+                      <h5 className="text-white">Breakfast</h5>
+                      <p className="text-white">
+                        Some representative placeholder content for the first
+                        slide.
+                      </p>
+                      <div className="hover-buttons">
+                        <button className="btn rounded-5">View menu</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="carousel-item food-item2"
+                    data-bs-interval="2000"
+                  >
+                    <img src={image2} className="d-block w-100" alt="..." />
+                    <div className="carousel-caption d-md-block">
+                      <h5 className="text-white">Lunch</h5>
+                      <p className="text-white">
+                        Some representative placeholder content for the second
+                        slide.
+                      </p>
+                      <div className="hover-buttons">
+                        <button className="btn rounded-5">View menu</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="carousel-item food-item3">
+                    <img src={image3} className="d-block w-100" alt="..." />
+                    <div className="carousel-caption d-md-block">
+                      <h5 className="text-white">Dinner</h5>
+                      <p className="text-white">
+                        Some representative placeholder content for the third
+                        slide.
+                      </p>
+                      <div className="hover-buttons">
+                        <button className="btn rounded-5">View menu</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleDark"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon text-bg-dark rounded-circle"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button
+                  className="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleDark"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon text-bg-dark rounded-circle"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
               </div>
-            )}
+            </div>
           </div>
         </div>
-        <div className="row" style={{height:'70vh'}}>
-          {loading ? (
-            <div className="d-grid justify-content-center align-items-center loader-div">
-              <span className="loader"></span>
-            </div>
-          ) : (
-            <>
-              {allProduct.length > 0 ? (
-                allProduct.map((item, index) => {
-                  console.log('item',item.img)
-                  return (
-                    <>
-                      <div className="col-lg-3 col-md-6 col-sm-12 p-3">
-                        <div
-                          className="card rounded-3 border-0"
-                          key={index + 1}
-                        >
-                          <img
-                            src={item.img}
-                            alt="img"
-                            className="rounded-2"
-                            onClick={() =>
-                              navigate(`/view-product/${item._id}`)
-                            }
-                            style={{ cursor: "pointer",height:'28vh' }}
-                          />
-                          <div
-                            className="card-title product-name text-nowrap fw-normal"
-                            style={{ fontSize: "15px", cursor: "pointer" }}
-                            onClick={() =>
-                              navigate(`/view-product/${item._id}`)
-                            }
-                          >
-                            {item.name}
-                          </div>
-                          <div className="product-price-section m-0 d-flex justify-content-between align-items-center">
-                            <div className="product-price">
-                              <p className="m-0 p-0">
-                                <span className="fs-5 fw-medium">₹</span>
-                                <span className="fs-5 fw-medium">
-                                  {item.price}
-                                </span>
-                              </p>
-                              <p className="product-discount fs-6 fw-medium d-flex gap-1">
-                                {item.discount == "none"
-                                  ? ""
-                                  : item.discount + " OFF"}
-                                <div className="card-title product-type">
-                                  {item.type == "veg" ? (
-                                    <img
-                                      src={veg}
-                                      alt="veg"
-                                      style={{ width: "20px" }}
-                                    />
-                                  ) : (
-                                    <img
-                                      src={nonVeg}
-                                      alt="nonVeg"
-                                      style={{ width: "20px" }}
-                                    />
-                                  )}
-                                </div>
-                              </p>
-                            </div>
-                            <div className="add-product d-flex gap-2">
-                              <button
-                                className="btn btn-outline-success rounded-pill px-4"
-                                onClick={() => navigate(`checkout/${item._id}`)}
-                              >
-                                Buy
-                              </button>
 
-                              <button
-                                className="btn btn-outline-warning rounded-pill px-4"
-                                onClick={() => handleAddcart(item)}
-                              >
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+        {/* food highlight section */}
+        <div className="food-item-container">
+          <p className="food-title">Delicious food for you</p>
+          <div className="food-category">
+            <span>Foods</span>
+            <span>Drikns</span>
+            <span>Snacks</span>
+          </div>
+          <div className="food-card">
+            <div className="row row-gap-4 justify-content-center">
+              <div className="see-more">
+                <span>See more</span>
+              </div>
+              {APIData.slice(0, 3).map((item, index) => {
+                return (
+                  <div
+                    className="col-xl-3 col-lg-4 col-md-4 col-sm-12 gap-2 food-item-col"
+                    key={index}
+                  >
+                    <div className="foodcard-container border-0">
+                      <div className="food-image">
+                        <img
+                          src={item.img}
+                          alt="food item"
+                          className="foodItem"
+                        />
                       </div>
-                    </>
-                  );
-                })
-              ) : (
-                <p className="text-center fs-3 fw-medium">Product not found</p>
-              )}
-            </>
-          )}
+                      <div className="food-details">
+                        <p className="food-name">{item.name}</p>
+                        <p className="food-price">{"Rs." + item.price}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Food tips & tricks */}
+        <div className="row food-tips-tricks-container">
+          <div className="col-12">
+            <div className="food-tips-tricks">
+              <div className="background-ingredients-image">
+                <img
+                  src={ingredients}
+                  alt="ingredients"
+                  className="food-ingredients"
+                />
+              </div>
+              <div className="background-deliciouse-image">
+                <img
+                  src={deliciouse}
+                  alt="ingredients"
+                  className="deliciouse-food"
+                />
+              </div>
+              <div className="food-tips-desc">
+                <p className="food-desc-title">
+                  Pure ingredients, Delicious food
+                </p>
+                <p className="food-short-desc">
+                  Some trendy and practical hacks for you
+                </p>
+                <button className="btn food-tips-btn">Tips & Tricks</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* special dishes */}
+        <p className="special-dish-title">Our special dishes</p>
+        <div className="special-dishes">
+          <div className="popular-food-section-one">
+            <div className="popular-food-image">
+              <img
+                src={specialDish1}
+                alt="special dish"
+                className="first-food-section"
+              />
+            </div>
+            <div className="special-food-title">
+              <span>Special kadhi</span>
+            </div>
+            <div className="special-food-desc">
+              <span>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
+                libero facere, praesentium cupiditate distinctio rerum explicabo
+                veritatis sed consequatur perspiciatis? libero facere,
+                praesentium cupiditate distinctio rerum explicabo veritatis sed
+                consequatur perspiciatis?
+              </span>
+            </div>
+          </div>
+          <div className="popular-food-section-two d-flex flex-column justify-content-between gap-sm-3">
+            <div className="food-item-one d-sm-flex">
+              <div className="popular-food-image-first d-flex">
+                <img
+                  src={specialDish1}
+                  alt="special dish"
+                  className="first-foodItem-section"
+                />
+              </div>
+              <div className="food-item-desc d-flex flex-column align-items-start">
+                <div className="special-food-title">
+                  <span>Special kadhi</span>
+                </div>
+                <div className="special-food-desc-first">
+                  <span>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
+                    libero facere, praesentium cupiditate distinctio rerum
+                    explicabo veritatis sed consequatur perspiciatis? libero
+                    facere, praesentium cupiditate distinctio rerum explicabo
+                    veritatis sed consequatur perspiciatis?
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="food-item-two d-flex gap-2">
+              <div className="popular-food-image-second d-flex">
+                <img
+                  src={specialDish1}
+                  alt="special dish"
+                  className="first-foodItem-section"
+                />
+              </div>
+              <div className="food-item-desc d-flex flex-column align-items-start">
+                <div className="special-food-title">
+                  <span>Special kadhi</span>
+                </div>
+                <div className="special-food-desc-second">
+                  <span>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
+                    libero facere, praesentium cupiditate distinctio rerum
+                    explicabo veritatis sed consequatur perspiciatis? libero
+                    facere, praesentium cupiditate distinctio rerum explicabo
+                    veritatis sed consequatur perspiciatis?
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <ToastContainer autoClose={2000} />
     </>
   );
 };
