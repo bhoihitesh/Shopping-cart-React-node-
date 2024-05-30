@@ -331,46 +331,6 @@ const Home = () => {
                 </>
               );
             })}
-            {/* <div className="first-chef-section chef-section">
-              <div className="chef-img">
-                <img src={chef2} alt="chef" className="chef-image" />
-              </div>
-              <p className="chef-name">Martin deloit</p>
-              <p className="chef-type">Chef</p>
-              <div className="know-more-btn">
-                <button>Know more</button>
-              </div>
-              </div>
-              <div className="second-chef-section chef-section">
-              <div className="chef-img">
-                <img src={chef2} alt="chef" className="chef-image" />
-              </div>
-              <p className="chef-name">Johny classen</p>
-              <p className="chef-type">Chef</p>
-              <div className="know-more-btn">
-                <button>Know more</button>
-              </div>
-              </div>
-              <div className="third-chef-section chef-section">
-              <div className="chef-img">
-                <img src={chef2} alt="chef" className="chef-image" />
-              </div>
-              <p className="chef-name">mark vitori</p>
-              <p className="chef-type">Chef</p>
-              <div className="know-more-btn">
-                <button>Know more</button>
-              </div>
-              </div>
-              <div className="fourth-chef-section chef-section">
-              <div className="chef-img">
-                <img src={chef2} alt="chef" className="chef-image" />
-              </div>
-              <p className="chef-name">mark vitori</p>
-              <p className="chef-type">Chef</p>
-              <div className="know-more-btn">
-                <button>Know more</button>
-              </div>
-              </div> */}
           </div>
         </div>
       </div>
