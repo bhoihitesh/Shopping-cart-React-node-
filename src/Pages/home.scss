@@ -179,6 +179,12 @@
   box-shadow: 0px 30px 60px 0px #3939391a;
   padding: 10px 10px;
 }
+.food-card-menubar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 .popular-food-section-two {
   width: 60%;
 }
@@ -268,6 +274,70 @@
   color: #646468;
 }
 /*** Special dishes css end ***/
+
+/*** Our chefs css start ***/
+.chef-main-section {
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  gap: 20px;
+  padding: 20px;
+}
+.chef-container-title {
+  font-size: 28px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px 0px;
+}
+.chef-section {
+  width: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 30px 60px 0px rgba(57, 57, 57, 0.1019607843);
+}
+.chef-image {
+  width: 100%;
+}
+.chef-name {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3a3a3a;
+  text-align: center;
+  padding-top: 20px;
+}
+.chef-type {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fa4a0c;
+  text-align: center;
+}
+.know-more-btn {
+  text-align: center;
+  padding: 10px 0px;
+}
+.chef-section button {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+}
+.chef-section button:hover {
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50px;
+}
+/*** Our chefs css end ***/
 @media screen and (width <= 767px) {
   /*** Food tips & tricks css start ***/
   .food-tips-tricks {
@@ -328,5 +398,26 @@
   .food-item-two {
     flex-direction: column !important;
   }
+  .food-card-menubar {
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 10px 20px;
+    padding: 20px 10px;
+  }
+  .foodcard-container {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
   /*** Special dishes css end ***/
+
+  /*** our chefs css start ***/
+  .chef-main-section {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .chef-section {
+    width: 100% !important;
+  }
+  /*** our chefs css end ***/
 }

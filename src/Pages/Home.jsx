@@ -6,6 +6,10 @@ import image3 from "../assets/images/photo-traditional-indian-food-dish-celebrat
 import ingredients from "../assets//images/flat-lay-flexitarian-diet-pot.png";
 import deliciouse from "../assets/images/flexitarian-diet-pot-view.png";
 import specialDish1 from "../assets/images/pexels-foodie-factor-162291-539451.jpg";
+import chef1 from "../assets/images/portrait-man-smiling-kitchen.png";
+import chef2 from "../assets/images/chef-with-thumb-up-white-background.png";
+import chef3 from "../assets/images/pleased-young-beautiful-girl-chef-uniform-points-with-hand-side-isolated-orange-wall.png";
+import chef4 from "../assets/images/confused-young-female-cook-wearing-chef-uniform-holding-crossing-frying-pan-with-ladle-isolated-white-background.png";
 import axios from "axios";
 import { useGetFoodItemsQuery } from "../api/apiSlice";
 const Home = () => {
@@ -28,7 +32,29 @@ const Home = () => {
     getProducts();
     isLoading ? setLoading(true) : setAPIData(data.getProducts);
   }, []);
-  console.warn("data", APIData);
+
+  const chefObj = [
+    {
+      id: 1,
+      name: "dcjndc",
+      type: "chef",
+    },
+    {
+      id: 2,
+      name: "dcjndc",
+      type: "chef",
+    },
+    {
+      id: 2,
+      name: "dcjndc",
+      type: "chef",
+    },
+    {
+      id: 2,
+      name: "dcjndc",
+      type: "chef",
+    }
+  ];
   return (
     <>
       <div className="container-fluid home-container">
@@ -150,16 +176,14 @@ const Home = () => {
             <span>Snacks</span>
           </div>
           <div className="food-card">
-            <div className="row row-gap-4 justify-content-center">
-              <div className="see-more">
-                <span>See more</span>
-              </div>
+            {/* <div className="row row-gap-4 justify-content-center"> */}
+            <div className="see-more">
+              <span>See more</span>
+            </div>
+            <div className="food-card-menubar">
               {APIData.slice(0, 3).map((item, index) => {
                 return (
-                  <div
-                    className="col-xl-3 col-lg-4 col-md-4 col-sm-12 gap-2 food-item-col"
-                    key={index}
-                  >
+                  <div className="food-item-col" key={index}>
                     <div className="foodcard-container border-0">
                       <div className="food-image">
                         <img
@@ -283,6 +307,70 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Our chef */}
+        <div className="container our-chef-container">
+          <p className="chef-container-title">Our chefs</p>
+          <div className="row chef-main-section">
+            {chefObj.map((item, index) => {
+              console.warn("items", item);
+              return (
+                <>
+                  <div className="col-lg-4 col-md-4 col-sm-12 first-chef-section chef-section">
+                    <div className="chef-img">
+                      <img src={chef2} alt="chef" className="chef-image" />
+                    </div>
+                    <p className="chef-name">Martin deloit</p>
+                    <p className="chef-type">Chef</p>
+                    <div className="know-more-btn">
+                      <button>Know more</button>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+            {/* <div className="first-chef-section chef-section">
+              <div className="chef-img">
+                <img src={chef2} alt="chef" className="chef-image" />
+              </div>
+              <p className="chef-name">Martin deloit</p>
+              <p className="chef-type">Chef</p>
+              <div className="know-more-btn">
+                <button>Know more</button>
+              </div>
+              </div>
+              <div className="second-chef-section chef-section">
+              <div className="chef-img">
+                <img src={chef2} alt="chef" className="chef-image" />
+              </div>
+              <p className="chef-name">Johny classen</p>
+              <p className="chef-type">Chef</p>
+              <div className="know-more-btn">
+                <button>Know more</button>
+              </div>
+              </div>
+              <div className="third-chef-section chef-section">
+              <div className="chef-img">
+                <img src={chef2} alt="chef" className="chef-image" />
+              </div>
+              <p className="chef-name">mark vitori</p>
+              <p className="chef-type">Chef</p>
+              <div className="know-more-btn">
+                <button>Know more</button>
+              </div>
+              </div>
+              <div className="fourth-chef-section chef-section">
+              <div className="chef-img">
+                <img src={chef2} alt="chef" className="chef-image" />
+              </div>
+              <p className="chef-name">mark vitori</p>
+              <p className="chef-type">Chef</p>
+              <div className="know-more-btn">
+                <button>Know more</button>
+              </div>
+              </div> */}
           </div>
         </div>
       </div>
