@@ -164,8 +164,7 @@ const Product = () => {
           ) : (
             <>
               {allProduct.length > 0 ? (
-                allProduct.map((item, index) => {
-                  console.log('item',item.img)
+                allProduct.slice(0,4).map((item, index) => {
                   return (
                     <>
                       <div className="col-lg-3 col-md-6 col-sm-12 p-3">
