@@ -277,6 +277,7 @@
 
 /*** Our chefs css start ***/
 .chef-main-section {
+  justify-content: center;
   flex-wrap: nowrap;
   overflow-x: scroll;
   gap: 20px;
@@ -328,6 +329,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
+  transition: 0.3s ease-out;
 }
 .chef-section button:hover {
   padding: 5px 10px;
@@ -335,8 +337,50 @@
   background-color: #000;
   color: #fff;
   border-radius: 50px;
+  transition: 0.3s ease-in;
 }
 /*** Our chefs css end ***/
+
+/*** Contact us css start ***/
+.contact-title {
+  font-size: 28px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px 0px;
+}
+.contact-us-container {
+  margin: 20px 0px;
+}
+.contact-us-container .contact-us-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 40%;
+  margin: auto;
+}
+.submit-btn-section .contact-btn {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  transition: 0.3s ease-out;
+}
+.submit-btn-section .contact-btn:hover {
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50px;
+  transition: 0.3s ease-in;
+}
+/*** Contact us css end ***/
 @media screen and (width <= 767px) {
   /*** Food tips & tricks css start ***/
   .food-tips-tricks {
@@ -372,12 +416,15 @@
   /*** Special dishes css start ***/
   .special-dishes {
     flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
   }
   .popular-food-section-one {
-    width: 100% !important;
+    width: 85% !important;
   }
   .popular-food-section-two {
-    width: 100% !important;
+    width: 85% !important;
+    gap: 20px !important;
   }
   .popular-food-image-first {
     width: 100% !important;
@@ -412,11 +459,24 @@
 
   /*** our chefs css start ***/
   .chef-main-section {
-    flex-wrap: nowrap;
-    overflow-x: scroll;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll !important;
   }
   .chef-section {
     width: 100% !important;
   }
   /*** our chefs css end ***/
+
+  /*** Contact us css start ***/
+  .contact-us-container .contact-us-section {
+    width: 80% !important;
+  }
+
+  /*** Contact us css end ***/
+}
+@media screen and (768px <= width <= 1023px) {
+  .chef-main-section {
+    justify-content: flex-start !important;
+  }
 }

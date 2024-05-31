@@ -6,10 +6,11 @@ import image3 from "../assets/images/photo-traditional-indian-food-dish-celebrat
 import ingredients from "../assets//images/flat-lay-flexitarian-diet-pot.png";
 import deliciouse from "../assets/images/flexitarian-diet-pot-view.png";
 import specialDish1 from "../assets/images/pexels-foodie-factor-162291-539451.jpg";
-import chef1 from "../assets/images/portrait-man-smiling-kitchen.png";
-import chef2 from "../assets/images/chef-with-thumb-up-white-background.png";
-import chef3 from "../assets/images/pleased-young-beautiful-girl-chef-uniform-points-with-hand-side-isolated-orange-wall.png";
-import chef4 from "../assets/images/confused-young-female-cook-wearing-chef-uniform-holding-crossing-frying-pan-with-ladle-isolated-white-background.png";
+import chef1 from "../assets/images/chef1.png";
+import chef2 from "../assets/images/chef2.png";
+import chef3 from "../assets/images/chef3.png";
+import chef4 from "../assets/images/chef4.png";
+import logo from "../assets/logo/brand.png";
 import axios from "axios";
 import { useGetFoodItemsQuery } from "../api/apiSlice";
 const Home = () => {
@@ -36,24 +37,28 @@ const Home = () => {
   const chefObj = [
     {
       id: 1,
-      name: "dcjndc",
+      name: "Martin monrow",
       type: "chef",
+      img: chef1,
     },
     {
       id: 2,
-      name: "dcjndc",
+      name: "Kely roy",
       type: "chef",
+      img: chef2,
     },
     {
-      id: 2,
-      name: "dcjndc",
+      id: 3,
+      name: "Dwen smith",
       type: "chef",
+      img: chef3,
     },
     {
-      id: 2,
-      name: "dcjndc",
+      id: 4,
+      name: "Kelwin lysh",
       type: "chef",
-    }
+      img: chef4,
+    },
   ];
   return (
     <>
@@ -320,10 +325,10 @@ const Home = () => {
                 <>
                   <div className="col-lg-4 col-md-4 col-sm-12 first-chef-section chef-section">
                     <div className="chef-img">
-                      <img src={chef2} alt="chef" className="chef-image" />
+                      <img src={item.img} alt="chef" className="chef-image" />
                     </div>
-                    <p className="chef-name">Martin deloit</p>
-                    <p className="chef-type">Chef</p>
+                    <p className="chef-name">{item.name}</p>
+                    <p className="chef-type">{item.type}</p>
                     <div className="know-more-btn">
                       <button>Know more</button>
                     </div>
@@ -331,6 +336,64 @@ const Home = () => {
                 </>
               );
             })}
+          </div>
+        </div>
+
+        {/* Contact us */}
+        <div className="contact-us-container">
+          <p className="contact-title">Contact us</p>
+          <div className="contact-us-section">
+            <div className="brand-logo">
+              <img src={logo} alt="logo" className="brand-logo" />
+            </div>
+            <div className="fname-section w-100">
+              <label htmlFor="fname">First name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="fname"
+                autoComplete="on"
+              />
+            </div>
+            <div className="lname-section w-100">
+              <label htmlFor="lname">Last name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="lname"
+                autoComplete="on"
+              />
+            </div>
+            <div className="email-section w-100">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                className="form-control"
+                id="email"
+                autoComplete="on"
+              />
+            </div>
+            <div className="phone-section w-100">
+              <label htmlFor="phone">Mobile</label>
+              <input
+                type="text"
+                className="form-control"
+                id="phone"
+                autoComplete="on"
+              />
+            </div>
+            <div className="address-section w-100">
+              <label htmlFor="address">Address</label>
+              <textarea
+                className="form-control"
+                id="address"
+                cols="30"
+                rows="3"
+              />
+            </div>
+            <div className="submit-btn-section">
+              <button className="contact-btn">Contact us</button>
+            </div>
           </div>
         </div>
       </div>
