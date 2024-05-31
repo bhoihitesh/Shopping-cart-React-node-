@@ -316,7 +316,7 @@ const Home = () => {
         </div>
 
         {/* Our chef */}
-        <div className="container our-chef-container">
+        <div className="container-fluid our-chef-container">
           <p className="chef-container-title">Our chefs</p>
           <div className="row chef-main-section">
             {chefObj.map((item, index) => {
@@ -343,9 +343,9 @@ const Home = () => {
         <div className="contact-us-container">
           <p className="contact-title">Contact us</p>
           <div className="contact-us-section">
-            <div className="brand-logo">
+            {/* <div className="brand-logo">
               <img src={logo} alt="logo" className="brand-logo" />
-            </div>
+            </div> */}
             <div className="fname-section w-100">
               <label htmlFor="fname">First name</label>
               <input

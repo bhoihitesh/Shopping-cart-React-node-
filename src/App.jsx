@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Home from "./Pages/Home.jsx";
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/view-product/:id" element={<ProductDetail />} />
             <Route path="/checkout/:id" element={<Checkout />} />
           </Routes>
+          <Footer/>
         </>
       ) : (
         <Splash />
