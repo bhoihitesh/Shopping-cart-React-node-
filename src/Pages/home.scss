@@ -383,6 +383,56 @@
   transition: 0.3s ease-in;
 }
 /*** Contact us css end ***/
+
+/*** Alert msg pop-up box css start ***/
+.alert-container{
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  background-color: #000;
+} 
+.alert-main-box{
+  position: fixed;
+  top: 0;
+  transform: translate(100%,150%);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-wrap: balance;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 30px 60px 0px rgba(57, 57, 57, 0.1019607843);
+  z-index: 99;
+}
+.alert-msg{
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+}
+.alert-ok-btn{
+  margin-top: 10px;
+  border-radius: 50px;
+  background-color: #000;
+  color: #fff;
+  padding: 8px 25px;
+  transition: 0.3s ease-out;
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+}
+.alert-ok-btn:hover{
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+  transition: 0.3s ease-in;
+}
+/*** Alert msg pop-up box css end ***/ 
 @media screen and (width <= 767px) {
   /*** Food tips & tricks css start ***/
   .food-tips-tricks {
@@ -476,6 +526,13 @@
   }
 
   /*** Contact us css end ***/
+
+  /*** Alert msg pop-up box css start ***/
+  .alert-main-box{
+    width: 60%;
+    transform: translate(25%,100%) !important;
+  } 
+  /*** Alert msg pop-up box css end ***/ 
 }
 @media screen and (768px <= width <= 1023px) {
   .chef-main-section {

@@ -10,7 +10,7 @@ import chef1 from "../assets/images/chef1.png";
 import chef2 from "../assets/images/chef2.png";
 import chef3 from "../assets/images/chef3.png";
 import chef4 from "../assets/images/chef4.png";
-import logo from "../assets/logo/brand.png";
+import alert from "../assets/images/icons8-alert.gif";
 import axios from "axios";
 import { useGetFoodItemsQuery } from "../api/apiSlice";
 const Home = () => {
@@ -18,6 +18,7 @@ const Home = () => {
   const [APIData, setAPIData] = useState([]);
   const [productCategory, setProductCategory] = useState("all");
   const [loading, setLoading] = useState(true);
+  const [alertBox, setAlertBox] = useState(true);
 
   const api = import.meta.env.VITE_API;
 
@@ -394,6 +395,18 @@ const Home = () => {
             <div className="submit-btn-section">
               <button className="contact-btn">Contact us</button>
             </div>
+          </div>
+        </div>
+
+        <div className="alert-container">
+          <div className={`${alertBox?"alert-main-box":'d-none'}`}>
+            <div className="alert-image">
+              <img src={alert} alt="alert" className="alert-image"/>
+            </div>
+            <p className="alert-msg">
+              This site is under the development, some UI and Functionalities is borken or coming soon.
+            </p>
+            <button className="alert-ok-btn" onClick={()=>setAlertBox(false)}>Ok</button>
           </div>
         </div>
       </div>
