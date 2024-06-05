@@ -1,9 +1,9 @@
 import React from "react";
 import "./footer.scss";
 import logo from "../assets/logo/brand.png";
-import fb from '../assets/images/icons8-facebook-50.png'
-import yt from '../assets/images/icons8-youtube-50.png'
-import insta from '../assets/images/icons8-instagram-50.png'
+import fb from '../assets/images/icons8-facebook.svg'
+import yt from '../assets/images/icons8-youtube.svg'
+import insta from '../assets/images/icons8-instagram.svg'
 const Footer = () => {
   return (
     <>
