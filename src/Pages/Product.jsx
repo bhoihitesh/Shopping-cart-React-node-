@@ -156,7 +156,7 @@ const Product = () => {
             )}
           </div>
         </div>
-        <div className="row" style={{height:'70vh'}}>
+        <div className="row">
           {loading ? (
             <div className="d-grid justify-content-center align-items-center loader-div">
               <span className="loader"></span>
@@ -164,10 +164,10 @@ const Product = () => {
           ) : (
             <>
               {allProduct.length > 0 ? (
-                allProduct.slice(0,4).map((item, index) => {
+                allProduct.map((item, index) => {
                   return (
                     <>
-                      <div className="col-lg-3 col-md-6 col-sm-12 p-3">
+                      <div className="col-lg-3 col-md-4 col-sm-5 p-3">
                         <div
                           className="card rounded-3 border-0"
                           key={index + 1}
