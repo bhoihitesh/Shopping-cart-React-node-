@@ -116,6 +116,79 @@
   color: #fa4a0c;
 }
 
+/*** Food home page video description css start ***/
+.food-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+}
+.food-para{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.food-img{
+  width: 60%;
+}
+.food-title p{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+} 
+.food-desc p{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-wrap:wrap;
+}
+.food-btns{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+} 
+.food-btns .book-btn{
+  border-radius: 50px;
+  color: #fff;
+  background-color: #fa4a0c;
+  border: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.food-btns .play-btn{
+  border-radius: 50px;
+  color: #fff;
+  background-color: #fa4a0c;
+  border: #fff;
+  padding:10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.food-img{
+  display: flex;
+  justify-content: flex-end;
+}
+.food-img img{
+  animation: bounce 2s ease-in-out infinite;;
+  width: 100%;
+}
+
+/*** Image rotating animation ***/
+@keyframes bounce{
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Adjust this value to control the bounce height */
+  }
+} 
+/*** Food home page video description css end ***/ 
+
 /*** food tips and tricks css start ***/
 .food-tips-tricks {
   background-color: rgb(12, 0, 0);
@@ -390,8 +463,9 @@
 } 
 .alert-main-box{
   position: fixed;
-  top: 0;
-  transform: translate(100%,150%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -527,9 +601,34 @@
   /*** Alert msg pop-up box css start ***/
   .alert-main-box{
     width: 60%;
-    transform: translate(25%,100%) !important;
   } 
   /*** Alert msg pop-up box css end ***/ 
+
+  /*** Food home page video description css start ***/
+  .food-container{
+    flex-direction: column !important;
+    padding: 10px !important;
+  }
+  .food-para{
+    width: 100% !important;
+  }
+  .food-title p{
+    font-size: 28px !important;
+    text-wrap: balance !important;
+    text-align: center !important;
+  }
+  .food-desc p{
+    font-size: 18px !important;
+    text-wrap: balance !important;
+    text-align: center !important;
+  }
+  .food-btns{
+    justify-content: center !important;
+  }
+  .food-img{
+    width: 100%;
+  }
+  /*** Food home page video description css end ***/
 }
 @media screen and (768px <= width <= 1023px) {
   .chef-main-section {

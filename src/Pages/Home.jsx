@@ -11,6 +11,7 @@ import chef2 from "../assets/images/chef2.png";
 import chef3 from "../assets/images/chef3.png";
 import chef4 from "../assets/images/chef4.png";
 import alert from "../assets/images/icons8-alert.gif";
+import pizza from "../assets/images/pexels-ahmad-nawawi-285301-2714722-removebg.png";
 import axios from "axios";
 import { useGetFoodItemsQuery } from "../api/apiSlice";
 const Home = () => {
@@ -65,7 +66,7 @@ const Home = () => {
     <>
       <div className="container-fluid home-container">
         {/* Food carusel section */}
-        <div className="row">
+        {/* <div className="row">
           <div className="col-xl-12">
             <div className="carousel-container">
               <div
@@ -168,6 +169,33 @@ const Home = () => {
                   ></span>
                   <span className="visually-hidden">Next</span>
                 </button>
+              </div>
+            </div>
+          </div>
+        </div> */}
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="food-container">
+              <div className="food-para">
+                <div className="food-title">
+                  <p>Enjoy your healty delicious food</p>
+                </div>
+                <div className="food-desc">
+                  <p>
+                    Fresh and delicious food that brings happiness, We serve the food
+                  for your mood.
+                    {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                    eaque dignissimos consequuntur earum quia rerum facere
+                    eligendi deserunt libero maxime. */}
+                  </p>
+                </div>
+                <div className="food-btns">
+                  <button className="book-btn">Book a table</button>
+                  <button className="play-btn">Play</button>
+                </div>
+              </div>
+              <div className="food-img">
+                <img src={pizza} alt="pizza" />
               </div>
             </div>
           </div>
@@ -399,14 +427,17 @@ const Home = () => {
         </div>
 
         <div className="alert-container">
-          <div className={`${alertBox?"alert-main-box":'d-none'}`}>
+          <div className={`${alertBox ? "alert-main-box" : "d-none"}`}>
             <div className="alert-image">
-              <img src={alert} alt="alert" className="alert-image"/>
+              <img src={alert} alt="alert" className="alert-image" />
             </div>
             <p className="alert-msg">
-              This site is under the development, some UI and Functionalities is borken or coming soon.
+              This site is under the development, some UI and Functionalities is
+              borken or coming soon.
             </p>
-            <button className="alert-ok-btn" onClick={()=>setAlertBox(false)}>Ok</button>
+            <button className="alert-ok-btn" onClick={() => setAlertBox(false)}>
+              Ok
+            </button>
           </div>
         </div>
       </div>

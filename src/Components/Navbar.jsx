@@ -24,7 +24,7 @@ const Navbar = () => {
           <div className="col-lg-12 col-mf-6 col-sm-12 d-flex justify-content-start align-items-center">
             <div className="navbar-container d-flex justify-content-between align-items-center w-100 px-1 flex-sm-row flex-column">
               <div className="navbar-brand d-flex justify-content-between align-items-center w-100 px-2">
-                <img src={brand} alt="brand" className="pt-2 brand-logo" />
+                <img src={brand} alt="brand" className="brand-logo" />
                 <RiMenu2Line
                   className="fs-1 d-sm-none"
                   onClick={() => setToggleNavbar(!toggleNavbar)}
