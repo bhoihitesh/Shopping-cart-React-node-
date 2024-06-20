@@ -1,0 +1,74 @@
+.auth-container {
+  width: 100%;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-header-container {
+  width: 60%;
+  background-color: #fff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0px 30px 60px 0px #3939391a;
+}
+
+/*** login form button css start ***/
+.auth-btn-container {
+  gap: 60px;
+}
+.auth-btn-container .login-btn {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 10px 30px;
+  outline: none;
+}
+.login-btn:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fa4a0c;
+  border-radius: 50%;;
+}
+/*** login form button css end ***/
+
+/*** Sign-up form button css start ***/
+.auth-btn-container .signup-btn {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;  
+  padding: 10px 30px;
+}
+.signup-btn:hover::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fa4a0c;
+    border-radius: 50%;
+}
+/*** Sign-up form button css end ***/
+
+@media screen and (width <= 767px) {
+/*** Sign-up form button css start ***/
+.auth-header-container{
+  width: 100% !important;
+}
+.auth-btn-container .login-btn{
+  padding: 5px 30px;
+}
+.auth-btn-container .signup-btn{
+  padding: 5px 30px;
+}
+/*** Sign-up form button css end ***/
+}

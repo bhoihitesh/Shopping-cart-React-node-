@@ -19,6 +19,7 @@ import ProductDetail from "./Pages/ProductDetail.jsx";
 import Crickscore from "./Crickscore.jsx";
 import Splash from "./Components/Splash.jsx";
 import Product from "./Pages/Product.jsx";
+import Auth from "./Components/Auth.jsx";
 const App = () => {
   const [splashBack, setSplashBack] = useState(false);
   const location = useLocation();
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/view-product/:id" element={<ProductDetail />} />
             <Route path="/checkout/:id" element={<Checkout />} />
+            <Route path="/auth" element={<Auth />} />
           </Routes>
           <Footer/>
         </>

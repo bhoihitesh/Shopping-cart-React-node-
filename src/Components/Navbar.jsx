@@ -54,7 +54,7 @@ const Navbar = () => {
                       Faq
                     </li>
                     <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                      onClick={()=>navigate("/contact")}
+                      onClick={()=>navigate("/auth")}
                     >
                       Contact
                     </li>
