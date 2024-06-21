@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './splash.scss'
 import spinner from '../assets/animations/Animation - 1716667333864.gif'
 import brand from '../assets/logo/brand.png'
+import { useNavigate } from 'react-router-dom'
 const Splash = () => {
+  const navigate = useNavigate()
+
+  
   return (
     <>
     <div className="container-fluid">

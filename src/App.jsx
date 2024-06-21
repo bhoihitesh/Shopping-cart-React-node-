@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer"
+import Footer from "./Components/Footer";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Home from "./Pages/Home.jsx";
@@ -26,26 +26,53 @@ const App = () => {
   const navigate = useNavigate();
   const isCheckoutPage = location.pathname.startsWith("/checkout");
   const isLoginPage = location.pathname.startsWith("/login");
-  const isLoggedIn = localStorage.getItem("loggedIn")
+  const isLoggedIn = localStorage.getItem("loggedIn");
   console.warn(isLoggedIn);
   useEffect(() => {
-    setTimeout(() => {
-      setSplashBack(true);
+    // setTimeout(() => {
+    //   setSplashBack(true);
+    // }, 5000);
+
+    if (splashBack) {
+      // navigate("/");
+    } else {
       // navigate("/home");
-    }, 5000);
-    
-    if(splashBack){
-      // navigate("/home");
-    }
-    else{
-      // navigate('/')
     }
   }, []);
+
+  useEffect(()=>{
+    if(isLoggedIn){
+      setTimeout(() => {
+        setSplashBack(true);
+        navigate('/home')
+      }, 3000);
+    }
+  },[isLoggedIn])
   return (
     <>
       {/* {!isCheckoutPage && <Navbar />} */}
-      {/* {splashBack ? navigate('/home') : navigate('/')} */}  
-      {splashBack ? 
+      {/* {splashBack ? navigate('/home') : navigate('/')} */}
+      {splashBack ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Splash />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/live-cricket-score" element={<Crickscore />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/view-product/:id" element={<ProductDetail />} />
+            <Route path="/checkout/:id" element={<Checkout />} />
+            <Route path="/auth" element={<Auth />} />
+          </Routes>
+          <Footer />
+        </>
+      ) : !isLoggedIn ? (
+        <Auth />
+      ) : (
+        <Splash />
+      )}
+      {/* {splashBack ? 
       !isLoggedIn ? 
       <Auth/>
       :
@@ -66,7 +93,7 @@ const App = () => {
         </>
       ) : (
         <Splash />
-      )}
+      )} */}
     </>
   );
 };

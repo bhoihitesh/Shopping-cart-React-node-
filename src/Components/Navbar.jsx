@@ -17,6 +17,10 @@ const Navbar = () => {
     // setToggleNavbar(false);
     navigate("/cart");
   };
+  const handleLogout = () =>{
+    localStorage.clear();
+    window.location.reload();
+  }
   return (
     <>
       <div className="container-fluid navbar-main">
@@ -57,6 +61,11 @@ const Navbar = () => {
                       onClick={()=>navigate("/auth")}
                     >
                       Contact
+                    </li>
+                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={()=>handleLogout()}
+                    >
+                      Logout
                     </li>
                   </ul>
                 </div>
