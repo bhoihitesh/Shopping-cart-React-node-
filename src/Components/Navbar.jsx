@@ -9,18 +9,22 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
   const navigate = useNavigate();
-  const handleNavigate = () => {
-    // setToggleNavbar(false);
+  const handleRedirecthome = () => {
+    setToggleNavbar(false);
     navigate("/home");
   };
+  const handleRedirectmenu = () => {
+    setToggleNavbar(false);
+    navigate("/product");
+  };
   const handleCartNavigate = () => {
-    // setToggleNavbar(false);
+    setToggleNavbar(false);
     navigate("/cart");
   };
-  const handleLogout = () =>{
+  const handleLogout = () => {
     localStorage.clear();
     window.location.reload();
-  }
+  };
   return (
     <>
       <div className="container-fluid navbar-main">
@@ -36,34 +40,39 @@ const Navbar = () => {
               </div>
               <div
                 className={`${
-                  toggleNavbar ? "navbar-container-option" : "hide-navbar defualt-navbar"
+                  toggleNavbar
+                    ? "navbar-container-option"
+                    : "hide-navbar defualt-navbar"
                 }`}
               >
                 <div className="navbar-list-option">
                   <ul className="list-group flex-sm-row flex-column">
                     <li
                       className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                      onClick={() => navigate("/home")}
+                      onClick={() => handleRedirecthome()}
                     >
                       Home
                     </li>
-                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                      onClick={()=>navigate("/product")}
+                    <li
+                      className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={() => handleRedirectmenu()}
                     >
-                      Products
+                      food-corner
                     </li>
-                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                      onClick={()=>navigate("/faq")}
+                    <li
+                      className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={() => navigate("/faq")}
                     >
                       Faq
                     </li>
-                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                    {/* <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
                       onClick={()=>navigate("/auth")}
                     >
                       Contact
-                    </li>
-                    <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                      onClick={()=>handleLogout()}
+                    </li> */}
+                    <li
+                      className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
+                      onClick={() => handleLogout()}
                     >
                       Logout
                     </li>
