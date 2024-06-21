@@ -1,8 +1,7 @@
 .login-form-container{
     width: 30%;
+    padding-top: 50px;
 }
-
-
 .email-input .email-lable{
     font-size: 14px;
     font-weight: 600;
@@ -13,8 +12,57 @@
     font-weight: 600;
     color: #9a9a9d;
 }
-.forgot-passcode p{
+.forgot-passcode .forgot-passcode-lable{
     font-size: 14px;
     font-weight: 600;
     color:#FA4A0C;
+}
+.email-input #email {
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid #bdbdbe;
+    outline: none;
+    background-color: none;
+}
+.password-input #pass {
+    border: none;
+    border-bottom: 2px solid #bdbdbe;
+    outline: none;
+    background-color: none;
+}
+.forgot-passcode .forgot-passcode-lable{
+    cursor: pointer;
+    padding: 5px 0px;
+}
+.forgot-passcode{
+    position: relative;
+}
+.forgot-passcode .forgot-passcode-lable:hover::after{
+    content: '';
+    position: absolute;
+    width: 110px;
+    height: 2.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #FA4A0C;
+}
+.proceed-to-login-btn {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #fa4a0c;
+}
+@media screen and (width <= 767px){
+ .login-form-container{
+    width: 80% !important;
+}   
+}
+@media screen and (768px <= width <= 1024px){
+ .login-form-container{
+    width: 40% !important;
+}   
 }

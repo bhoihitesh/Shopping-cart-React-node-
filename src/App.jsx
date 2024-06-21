@@ -26,24 +26,30 @@ const App = () => {
   const navigate = useNavigate();
   const isCheckoutPage = location.pathname.startsWith("/checkout");
   const isLoginPage = location.pathname.startsWith("/login");
+  const isLoggedIn = localStorage.getItem("loggedIn")
+  console.warn(isLoggedIn);
   useEffect(() => {
     setTimeout(() => {
       setSplashBack(true);
-      navigate("/home");
+      // navigate("/home");
     }, 5000);
     
     if(splashBack){
-      navigate("/home");
+      // navigate("/home");
     }
     else{
-      navigate('/')
+      // navigate('/')
     }
   }, []);
   return (
     <>
       {/* {!isCheckoutPage && <Navbar />} */}
       {/* {splashBack ? navigate('/home') : navigate('/')} */}  
-      {splashBack ? (
+      {splashBack ? 
+      !isLoggedIn ? 
+      <Auth/>
+      :
+      (
         <>
           <Navbar />
           <Routes>
