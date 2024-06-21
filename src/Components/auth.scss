@@ -34,7 +34,7 @@
   bottom: 0;
   left: 0;
   background-color: #fa4a0c;
-  border-radius: 50%;;
+  // border-radius: 50%;;
 }
 /*** login form button css end ***/
 
@@ -55,7 +55,7 @@
     bottom: 0;
     left: 0;
     background-color: #fa4a0c;
-    border-radius: 50%;
+    // border-radius: 50%;
 }
 /*** Sign-up form button css end ***/
 
@@ -65,10 +65,10 @@
   width: 100% !important;
 }
 .auth-btn-container .login-btn{
-  padding: 5px 30px;
+  padding: 5px 30px !important;
 }
 .auth-btn-container .signup-btn{
-  padding: 5px 30px;
+  padding: 5px 30px !important;
 }
 /*** Sign-up form button css end ***/
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import './auth.scss'
 import bellaChef from '../assets/logo/bella-chef.png'
+import Login from './Login'
 const Auth = () => {
   return (
     <>
@@ -17,6 +18,9 @@ const Auth = () => {
                            <p className='signup-btn' >Sign-up</p> 
                         </div>
                     </div>
+                </div>
+                <div className="auth-form-container">
+                  <Login/>
                 </div>
             </div>
         </div>

@@ -325,7 +325,7 @@ const Home = () => {
               <img src={alert} alt="alert" className="alert-image" />
             </div>
             <p className="alert-msg">
-              This site is under the development, some UI and Functionalities is
+              This site is under the development, some UI and functionalities is
               borken or coming soon.
             </p>
             <button className="alert-ok-btn" onClick={() => setAlertBox(false)}>
