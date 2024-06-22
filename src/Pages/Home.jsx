@@ -77,9 +77,6 @@ const Home = () => {
                   <p>
                     Fresh and delicious food that brings happiness, We serve the food
                   for your mood.
-                    {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                    eaque dignissimos consequuntur earum quia rerum facere
-                    eligendi deserunt libero maxime. */}
                   </p>
                 </div>
                 <div className="food-btns">
@@ -88,7 +85,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="food-img">
-                <img src={pizza} alt="pizza" />
+                <img src={"https://bootstrapmade.com/demo/templates/Yummy/assets/img/hero-img.png"} alt="pizza" />
               </div>
             </div>
           </div>

@@ -119,9 +119,10 @@
 /*** Food home page video description css start ***/
 .food-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0px 20px 0px 20px;
+  margin-top:40px;
 }
 .food-para{
   width: 40%;
@@ -130,7 +131,13 @@
   gap: 10px;
 }
 .food-img{
-  width: 60%;
+  width: 50%;
+}
+
+.food-img img{
+  animation: bounce 2s ease-in-out infinite;;
+  max-width: 100%;
+  height: auto;
 }
 .food-title p{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -168,14 +175,6 @@
   padding:10px 20px;
   font-size: 18px;
   font-weight: 700;
-}
-.food-img{
-  display: flex;
-  justify-content: flex-end;
-}
-.food-img img{
-  animation: bounce 2s ease-in-out infinite;;
-  width: 100%;
 }
 
 /*** Image rotating animation ***/
@@ -608,9 +607,11 @@
   .food-container{
     flex-direction: column !important;
     padding: 10px !important;
+    margin-top: 25px !important;
   }
   .food-para{
     width: 100% !important;
+    order: 2 !important;
   }
   .food-title p{
     font-size: 28px !important;
@@ -626,14 +627,22 @@
     justify-content: center !important;
   }
   .food-img{
-    width: 100%;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .food-img img{
+    width: 80% !important;
   }
   /*** Food home page video description css end ***/
 }
 @media screen and (768px <= width <= 1023px) {
   .chef-main-section {
     justify-content: flex-start !important;
-    overflow-x: scroll;
+    overflow-x: scroll !important;
+  }
+  .food-title p{
+    font-size: 32px !important;
+    text-wrap: balance !important;
   }
 }
 @media screen and (1024px <= width <= 1279px) {
