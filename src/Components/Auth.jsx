@@ -24,7 +24,7 @@ const Auth = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-            <div className="col-lg-12">
+            <div className="col-lg-12" style={{backgroundColor:'#f8f9fa',height:'100vh'}}>
                 <div className="auth-container">
                     <div className="auth-header-container">
                         <div className="web-logo-section text-center">
