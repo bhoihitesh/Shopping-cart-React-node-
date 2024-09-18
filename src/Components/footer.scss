@@ -53,21 +53,21 @@
 }
 
 @media screen and (width <= 768px) {
-    .footer-main-container{
-        overflow-x: scroll !important;
-        gap: 50px !important;
-        padding: 20px !important;
-    }
-    .social-logo {
-      display: flex !important;
-    }
-    .mobile-no{
-        text-wrap: nowrap !important;
-    }
-    .email{
-        text-wrap: nowrap !important;
-    }
-    .brand-desc{
-      text-align: center !important;
-    }
+  .footer-main-container {
+    overflow-x: scroll !important;
+    gap: 50px !important;
+    padding: 20px !important;
+  }
+  .social-logo {
+    display: flex !important;
+  }
+  .mobile-no {
+    text-wrap: nowrap !important;
+  }
+  .email {
+    text-wrap: nowrap !important;
+  }
+  .brand-desc {
+    text-align: center !important;
+  }
 }

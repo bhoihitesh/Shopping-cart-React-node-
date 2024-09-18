@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./navbar.scss";
 import brand from "../assets/logo/brand.png";
 import cart from "../assets/images/icons8-cart-24.png";
@@ -65,11 +65,6 @@ const Navbar = () => {
                     >
                       Faq
                     </li>
-                    {/* <li className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
-                      onClick={()=>navigate("/auth")}
-                    >
-                      Contact
-                    </li> */}
                     <li
                       className="list-group-item border-0 fw-medium text-nowrap p-2 navbar-options"
                       onClick={() => handleLogout()}

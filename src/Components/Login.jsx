@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const navigate = useNavigate()
-  const handleLogin=()=>{
-      localStorage.setItem('loggedIn',true);
-      setTimeout(() => {
-        navigate('/home');
-      }, 1000);
-  }
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    localStorage.setItem("loggedIn", true);
+    setTimeout(() => {
+      navigate("/home");
+    }, 1000);
+  };
   return (
     <>
       <div className="container-fluid">
@@ -33,8 +33,16 @@ const Login = () => {
               <div className="forgot-passcode w-100">
                 <span className="forgot-passcode-lable">Forgot passcode?</span>
               </div>
-              <div className="proceed-to-login w-100" style={{marginTop:'80px'}}>
-                <button className="proceed-to-login-btn w-100" onClick={()=>handleLogin()}>Login</button>
+              <div
+                className="proceed-to-login w-100"
+                style={{ marginTop: "80px" }}
+              >
+                <button
+                  className="proceed-to-login-btn w-100"
+                  onClick={() => handleLogin()}
+                >
+                  Login
+                </button>
               </div>
             </div>
           </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import "./footer.scss";
 import logo from "../assets/logo/brand.png";
-import fb from '../assets/images/icons8-facebook.svg'
-import yt from '../assets/images/icons8-youtube.svg'
-import insta from '../assets/images/icons8-instagram.svg'
+import fb from "../assets/images/icons8-facebook.svg";
+import yt from "../assets/images/icons8-youtube.svg";
+import insta from "../assets/images/icons8-instagram.svg";
 const Footer = () => {
   return (
     <>
@@ -13,12 +13,12 @@ const Footer = () => {
             <div className="footer-main-container">
               <div className="web-brand-logo">
                 <div className="website-logo">
-                <img src={logo} alt="logo" className="logo" />
+                  <img src={logo} alt="logo" className="logo" />
                 </div>
 
                 <p className="brand-desc">
-                  Welcome to Bella Olanje. This Website is owned
-                  and operated by Dev.js technologies.
+                  Welcome to Bella Olanje. This Website is owned and operated by
+                  Dev.js technologies.
                 </p>
               </div>
 
@@ -41,9 +41,15 @@ const Footer = () => {
                 <div className="social-links">
                   <p>Get in touch</p>
                   <p className="social-logo">
-                  <span><img src={fb} alt="facebook" className="fb"/></span>
-                  <span><img src={insta} alt="instagram" className="insta"/></span>
-                  <span><img src={yt} alt="youtube" className="yt"/></span>
+                    <span>
+                      <img src={fb} alt="facebook" className="fb" />
+                    </span>
+                    <span>
+                      <img src={insta} alt="instagram" className="insta" />
+                    </span>
+                    <span>
+                      <img src={yt} alt="youtube" className="yt" />
+                    </span>
                   </p>
                 </div>
                 <p className="mobile-no">Call: +91-8200861893</p>

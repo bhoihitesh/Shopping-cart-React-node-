@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./cart.scss";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import checkOut from "../assets/images/icons8-checkout-30.png";
-import deleteProduct from "../assets/images/icons8-delete-30.png";
-import deleteProductPopup from "../assets/images/icons8-delete-48.png";
-import continueShopping from "../assets/images/Product hunt-bro.png";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus, FaTrash, FaHeart } from "react-icons/fa";
+import deleteProductPopup from "../assets/images/icons8-delete-48.png";
 const Cart = () => {
   const [allProduct, setAllProduct] = useState([]);
   const [openDelModel, setOpenDelModel] = useState(false);
-  const [emptyCart, setEmptyCart] = useState(true);
   const [delItemId, setDelItemId] = useState("");
   const [loading, setLoading] = useState(true);
-  const [count, setCount] = useState(1);
-  const navigate = useNavigate();
   const api = import.meta.env.VITE_API;
-  let totalPrice = 0;
   const getProducts = async () => {
     let res = await axios.get(`${api}/cart-products`);
     res.status == "200" ? setLoading(false) : setLoading(true);
@@ -28,10 +20,6 @@ const Cart = () => {
   useEffect(() => {
     getProducts();
   }, []);
-
-  setInterval(() => {
-    setEmptyCart(false);
-  }, 2000);
 
   const removeCartitem = async () => {
     let res = await axios.delete(`${api}/remove-cart-product`, {
@@ -89,7 +77,6 @@ const Cart = () => {
                   const quantity =
                     mapData.quantity == undefined ? 1 : mapData.quantity;
                   const price = mapData.price * quantity;
-                  totalPrice = price;
                   return (
                     <>
                       <div className="col-lg-4 col-md-12 mb-4 mb-lg-0">

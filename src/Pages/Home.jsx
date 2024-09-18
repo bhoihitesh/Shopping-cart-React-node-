@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./product.scss";
-import image1 from "../assets/images/delicious-food-table.jpg";
-import image2 from "../assets/images/freshly-baked-naan-bread-rustic-wood-bowl-generated-by-ai.jpg";
-import image3 from "../assets/images/photo-traditional-indian-food-dish-celebrate-diwali.jpg";
 import ingredients from "../assets//images/flat-lay-flexitarian-diet-pot.png";
 import deliciouse from "../assets/images/flexitarian-diet-pot-view.png";
 import specialDish1 from "../assets/images/pexels-foodie-factor-162291-539451.jpg";
@@ -11,13 +8,10 @@ import chef2 from "../assets/images/chef2.png";
 import chef3 from "../assets/images/chef3.png";
 import chef4 from "../assets/images/chef4.png";
 import alert from "../assets/images/icons8-alert.gif";
-import pizza from "../assets/images/pexels-ahmad-nawawi-285301-2714722-removebg.png";
 import axios from "axios";
 import { useGetFoodItemsQuery } from "../api/apiSlice";
 const Home = () => {
-  const [allProduct, setAllProduct] = useState([]);
   const [APIData, setAPIData] = useState([]);
-  const [productCategory, setProductCategory] = useState("all");
   const [loading, setLoading] = useState(true);
   const [alertBox, setAlertBox] = useState(true);
 
@@ -26,7 +20,6 @@ const Home = () => {
   const { data, isLoading } = useGetFoodItemsQuery();
   const getProducts = async () => {
     let res = await axios.get(`${api}/products`);
-    res.status == 200 ? setAllProduct(res.data && res.data.getProducts) : "";
     res.status == 200 ? setAPIData(res.data && res.data.getProducts) : "";
     res.status == 200 ? setLoading(false) : setLoading(true);
   };
@@ -75,8 +68,8 @@ const Home = () => {
                 </div>
                 <div className="food-desc">
                   <p>
-                    Fresh and delicious food that brings happiness, We serve the food
-                  for your mood.
+                    Fresh and delicious food that brings happiness, We serve the
+                    food for your mood.
                   </p>
                 </div>
                 <div className="food-btns">
@@ -85,7 +78,12 @@ const Home = () => {
                 </div>
               </div>
               <div className="food-img">
-                <img src={"https://bootstrapmade.com/demo/templates/Yummy/assets/img/hero-img.png"} alt="pizza" />
+                <img
+                  src={
+                    "https://bootstrapmade.com/demo/templates/Yummy/assets/img/hero-img.png"
+                  }
+                  alt="pizza"
+                />
               </div>
             </div>
           </div>
@@ -239,7 +237,6 @@ const Home = () => {
           <p className="chef-container-title">Our chefs</p>
           <div className="row chef-main-section">
             {chefObj.map((item, index) => {
-              console.warn("items", item);
               return (
                 <>
                   <div className="col-lg-4 col-md-4 col-sm-12 first-chef-section chef-section">
@@ -262,9 +259,6 @@ const Home = () => {
         <div className="contact-us-container">
           <p className="contact-title">Contact us</p>
           <div className="contact-us-section">
-            {/* <div className="brand-logo">
-              <img src={logo} alt="logo" className="brand-logo" />
-            </div> */}
             <div className="fname-section w-100">
               <label htmlFor="fname">First name</label>
               <input

@@ -117,48 +117,48 @@
 }
 
 /*** Food home page video description css start ***/
-.food-container{
+.food-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 20px 0px 20px;
-  margin-top:40px;
+  margin-top: 40px;
 }
-.food-para{
+.food-para {
   width: 40%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.food-img{
+.food-img {
   width: 50%;
 }
 
-.food-img img{
-  animation: bounce 2s ease-in-out infinite;;
+.food-img img {
+  animation: bounce 2s ease-in-out infinite;
   max-width: 100%;
   height: auto;
 }
-.food-title p{
+.food-title p {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-} 
-.food-desc p{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    text-wrap:wrap;
+  font-size: 36px;
+  font-weight: 700;
 }
-.food-btns{
+.food-desc p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-wrap: wrap;
+}
+.food-btns {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-} 
-.food-btns .book-btn{
+}
+.food-btns .book-btn {
   border-radius: 50px;
   color: #fff;
   background-color: #fa4a0c;
@@ -167,26 +167,29 @@
   font-size: 18px;
   font-weight: 700;
 }
-.food-btns .play-btn{
+.food-btns .play-btn {
   border-radius: 50px;
   color: #fff;
   background-color: #fa4a0c;
   border: #fff;
-  padding:10px 20px;
+  padding: 10px 20px;
   font-size: 18px;
   font-weight: 700;
 }
 
 /*** Image rotating animation ***/
-@keyframes bounce{
-  0%, 100% {
+@keyframes bounce {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px); /* Adjust this value to control the bounce height */
+    transform: translateY(
+      -20px
+    ); /* Adjust this value to control the bounce height */
   }
-} 
-/*** Food home page video description css end ***/ 
+}
+/*** Food home page video description css end ***/
 
 /*** food tips and tricks css start ***/
 .food-tips-tricks {
@@ -457,14 +460,14 @@
 /*** Contact us css end ***/
 
 /*** Alert msg pop-up box css start ***/
-.alert-container{
+.alert-container {
   width: 100%;
-} 
-.alert-main-box{
+}
+.alert-main-box {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -478,13 +481,13 @@
   box-shadow: 0px 30px 60px 0px rgba(57, 57, 57, 0.1019607843);
   z-index: 99;
 }
-.alert-msg{
+.alert-msg {
   font-size: 18px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
 }
-.alert-ok-btn{
+.alert-ok-btn {
   margin-top: 10px;
   border-radius: 50px;
   background-color: #000;
@@ -496,13 +499,13 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
 }
-.alert-ok-btn:hover{
+.alert-ok-btn:hover {
   border: 1px solid #000;
   background-color: #fff;
   color: #000;
   transition: 0.3s ease-in;
 }
-/*** Alert msg pop-up box css end ***/ 
+/*** Alert msg pop-up box css end ***/
 @media screen and (width <= 767px) {
   /*** Food tips & tricks css start ***/
   .food-tips-tricks {
@@ -598,39 +601,39 @@
   /*** Contact us css end ***/
 
   /*** Alert msg pop-up box css start ***/
-  .alert-main-box{
+  .alert-main-box {
     width: 70%;
-  } 
-  /*** Alert msg pop-up box css end ***/ 
+  }
+  /*** Alert msg pop-up box css end ***/
 
   /*** Food home page video description css start ***/
-  .food-container{
+  .food-container {
     flex-direction: column !important;
     padding: 10px !important;
     margin-top: 25px !important;
   }
-  .food-para{
+  .food-para {
     width: 100% !important;
     order: 2 !important;
   }
-  .food-title p{
+  .food-title p {
     font-size: 28px !important;
     text-wrap: balance !important;
     text-align: center !important;
   }
-  .food-desc p{
+  .food-desc p {
     font-size: 18px !important;
     text-wrap: balance !important;
     text-align: center !important;
   }
-  .food-btns{
+  .food-btns {
     justify-content: center !important;
   }
-  .food-img{
+  .food-img {
     width: 100% !important;
     text-align: center !important;
   }
-  .food-img img{
+  .food-img img {
     width: 80% !important;
   }
   /*** Food home page video description css end ***/
@@ -640,7 +643,7 @@
     justify-content: flex-start !important;
     overflow-x: scroll !important;
   }
-  .food-title p{
+  .food-title p {
     font-size: 32px !important;
     text-wrap: balance !important;
   }

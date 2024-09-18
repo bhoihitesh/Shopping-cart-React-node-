@@ -12,7 +12,6 @@ const Product = () => {
   const [productCategory, setProductCategory] = useState("all");
   const [searchFood, setSearchFood] = useState("");
   const [loading, setLoading] = useState(true);
-  const [addCart, setAddCart] = useState(false);
   const api = import.meta.env.VITE_API;
   const getProducts = async () => {
     let res = await axios.get(`${api}/products`);
@@ -43,11 +42,7 @@ const Product = () => {
         }))
       : setLoading(false);
     if (filteredProducts.length == 1) {
-      setAddCart(true);
       toast.warning("Already added to the cart !");
-      setTimeout(() => {
-        setAddCart(false);
-      }, 1000);
     } else {
       // Product already exists in the cart
       toast.success("Successfully added to the cart !");
@@ -179,7 +174,7 @@ const Product = () => {
                             onClick={() =>
                               navigate(`/view-product/${item._id}`)
                             }
-                            style={{ cursor: "pointer",height:'28vh' }}
+                            style={{ cursor: "pointer", height: "28vh" }}
                           />
                           <div
                             className="card-title product-name text-nowrap fw-normal"
@@ -253,4 +248,3 @@ const Product = () => {
 };
 
 export default Product;
-
