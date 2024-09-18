@@ -34,28 +34,9 @@ const ProductDetail = () => {
   useEffect(() => {
     getProductByCategory();
   }, [productData]);
-  const handleQuantityChange = (e) => {
-    const { value } = e.target;
-    const regx = /^\d+$/;
-    if (regx.test(count)) {
-      setCount(1);
-    } else {
-      setCount(value);
-    }
-  };
   if (count == 0) {
     setCount(1);
   }
-  const handleIncreaseCount = () => {
-    setCount(count + 1);
-  };
-  const handleDecreaseCount = () => {
-    setCount(count - 1);
-  };
-  const handleAddtoCart = async () => {
-    const postData = productData[0].getProduct;
-    navigate("/cart");
-  };
   return (
     <>
       <div className="container-fluid">
@@ -88,7 +69,6 @@ const ProductDetail = () => {
                         </p>
                       </div>
                       <div className="product-btns d-flex gap-2">
-                        {/* <button className="btn btn-outline-success" onClick={() => navigate(`checkout/${mapData._id}`)}>Buy</button> */}
                         <button
                           className="btn btn-warning"
                           onClick={() => handleAddtoCart()}
@@ -97,26 +77,6 @@ const ProductDetail = () => {
                         </button>
                       </div>
                     </div>
-                    {/* <div className="quantity-btns d-flex justify-content-end gap-2 pt-2">
-                      <button
-                        className="btn btn-outline-secondary fw-bold"
-                        onClick={() => handleDecreaseCount()}
-                      >
-                        -
-                      </button>
-                      <input
-                        type="text"
-                        value={count}
-                        className="quantity-input form-control text-center"
-                        onChange={(e) => handleQuantityChange(e)}
-                      ></input>
-                      <button
-                        className="btn btn-outline-secondary fw-bold"
-                        onClick={() => handleIncreaseCount()}
-                      >
-                        +
-                      </button>
-                    </div> */}
                   </div>
                 );
               })}
@@ -148,7 +108,7 @@ const ProductDetail = () => {
                     <div className="col-lg-4 col-md-6 col-sm-12" key={i + 1}>
                       <div className="card p-lg-1 p-md-2 border-0">
                         <div className="card-title">
-                          <img  
+                          <img
                             src={item.img}
                             alt="food-image"
                             className="foodImage rounded-2"
@@ -158,7 +118,7 @@ const ProductDetail = () => {
                           />
                           <div
                             className="card-title product-name fw-medium"
-                            style={{ fontSize: "16px", cursor: "pointer"  }}
+                            style={{ fontSize: "16px", cursor: "pointer" }}
                             onClick={() =>
                               navigate(`/view-product/${item._id}`)
                             }

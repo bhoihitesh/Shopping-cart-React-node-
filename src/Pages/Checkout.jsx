@@ -222,7 +222,7 @@ const Checkout = () => {
                               </strong>
                             </div>
                             <span>
-                              <strong>₹{mapData.price*count}</strong>
+                              <strong>₹{mapData.price * count}</strong>
                             </span>
                           </li>
                         </ul>

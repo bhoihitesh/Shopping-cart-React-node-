@@ -17,25 +17,25 @@
 .navbar-list-option {
   width: 100%;
 }
-.list-group{
+.list-group {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.brand-logo{
+.brand-logo {
   width: 150px;
 }
 .hide-navbar-menuIcons {
   display: flex;
   gap: 5px;
 }
-.navbar-cart-notification-container{
+.navbar-cart-notification-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.defualt-navbar{
+.defualt-navbar {
   display: flex;
   flex-direction: row;
   padding-right: 10px;
@@ -46,7 +46,7 @@
     height: 160px;
     transition: 0.5s all ease-in;
   }
-  .defualt-navbar{
+  .defualt-navbar {
     display: flex;
     flex-direction: column !important;
   }
